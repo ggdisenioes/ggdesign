@@ -135,6 +135,212 @@ export const translations = {
       placeholder: "Escribe tu mensaje...",
       greeting: "¡Hola! Soy el asistente virtual de GG Diseño. ¿En qué puedo ayudarte hoy?",
     },
+    // Services Page
+    servicesPage: {
+      sectionLabel: "Nuestros servicios",
+      title: "Soluciones que",
+      titleHighlight: "transforman",
+      subtitle: "Cada servicio está diseñado para resolver problemas reales y generar resultados medibles en tu negocio.",
+      requestInfo: "Solicitar información",
+      whatIncludes: "¿Qué incluye?",
+      problem: "Problema",
+      benefit: "Beneficio",
+      result: "Resultado",
+      ctaTitle: "¿No encuentras lo que buscas?",
+      ctaSubtitle: "Cada proyecto es único. Contanos qué necesitas y diseñamos una solución a medida para tu negocio.",
+      ctaButton: "Hablemos de tu proyecto",
+      services: {
+        web: {
+          title: "Desarrollo Web Profesional",
+          subtitle: "Sitios web que convierten",
+          description: "Creamos sitios web modernos, rápidos y optimizados que representan tu marca y generan resultados.",
+          problem: "Tu sitio web actual no refleja la calidad de tu negocio o no genera leads.",
+          benefit: "Una presencia digital profesional que inspira confianza y atrae clientes.",
+          result: "Más visitas, más conversiones, mejor imagen de marca.",
+          features: ["Diseño responsive y mobile-first", "Optimización SEO on-page", "Alta velocidad de carga", "Integración con analytics", "CMS fácil de gestionar"],
+        },
+        ecommerce: {
+          title: "Ecommerce y Plataformas",
+          subtitle: "Vende online sin límites",
+          description: "Tiendas online y plataformas digitales robustas, seguras y preparadas para escalar.",
+          problem: "Necesitas vender online pero las soluciones genéricas no se adaptan a tu negocio.",
+          benefit: "Una plataforma a medida que facilita la compra y maximiza ventas.",
+          result: "Aumento de ventas y mejor experiencia de compra para tus clientes.",
+          features: ["Checkout optimizado", "Gestión de inventario", "Pasarelas de pago seguras", "Integración con logística", "Panel de administración completo"],
+        },
+        ai: {
+          title: "Inteligencia Artificial",
+          subtitle: "IA que trabaja para ti",
+          description: "Integración de inteligencia artificial en tus procesos para automatizar, optimizar y escalar.",
+          problem: "Tareas repetitivas consumen tiempo y recursos de tu equipo.",
+          benefit: "IA aplicada de forma práctica y orientada a resultados de negocio.",
+          result: "Más eficiencia, mejor atención al cliente, decisiones basadas en datos.",
+          features: ["Chatbots inteligentes 24/7", "Automatización de respuestas", "Análisis de datos con IA", "Recomendaciones personalizadas", "Integración con plataformas existentes"],
+        },
+        automation: {
+          title: "Automatizaciones",
+          subtitle: "Procesos que funcionan solos",
+          description: "Automatización de flujos de trabajo y conexión entre herramientas para eliminar tareas manuales.",
+          problem: "Tu equipo pierde tiempo en tareas repetitivas que podrían automatizarse.",
+          benefit: "Flujos automáticos que funcionan sin intervención humana.",
+          result: "Menos errores, más tiempo para lo importante, costos reducidos.",
+          features: ["Captación automática de leads", "Workflows de email marketing", "Sincronización entre plataformas", "Notificaciones automáticas", "Reportes programados"],
+        },
+        security: {
+          title: "Ciberseguridad Web",
+          subtitle: "Seguridad desde el diseño",
+          description: "Implementación de buenas prácticas de seguridad web para proteger tu negocio y tus clientes.",
+          problem: "Tu sitio web puede tener vulnerabilidades que ponen en riesgo datos sensibles.",
+          benefit: "Tranquilidad de saber que tu plataforma está protegida.",
+          result: "Datos seguros, cumplimiento normativo, confianza del cliente.",
+          features: ["Auditoría de seguridad", "Certificados SSL/TLS", "Protección contra ataques", "Backups automáticos", "Cumplimiento RGPD"],
+        },
+        maintenance: {
+          title: "Mantenimiento y Soporte",
+          subtitle: "Tu web siempre al día",
+          description: "Servicio continuo de mantenimiento, actualizaciones y mejoras para mantener tu web en óptimas condiciones.",
+          problem: "Tu sitio necesita actualizaciones constantes que no tienes tiempo de gestionar.",
+          benefit: "Un equipo técnico que cuida tu web como si fuera suya.",
+          result: "Web siempre funcionando, segura y actualizada.",
+          features: ["Actualizaciones de seguridad", "Monitorización 24/7", "Backups periódicos", "Soporte técnico prioritario", "Mejoras continuas"],
+        },
+      },
+    },
+    // Projects Page
+    projectsPage: {
+      sectionLabel: "Nuestro trabajo",
+      title: "Proyectos que",
+      titleHighlight: "hablan",
+      subtitle: "Casos reales con resultados medibles. Cada proyecto representa un desafío superado y un cliente satisfecho.",
+      challenge: "Desafío",
+      solution: "Solución",
+      results: "Resultados",
+      client: "Cliente",
+      ctaTitle: "Tu proyecto puede ser el próximo",
+      ctaSubtitle: "Contanos qué desafío enfrentas y trabajemos juntos para encontrar la mejor solución.",
+      ctaButton: "Empezar un proyecto",
+      projects: {
+        project1: {
+          title: "Sistema de gestión empresarial",
+          client: "Empresa de logística",
+          category: "Desarrollo Web + Automatizaciones",
+          description: "Plataforma integral de gestión con dashboard en tiempo real, automatización de reportes y seguimiento de entregas.",
+          challenge: "Gestión manual de pedidos y falta de visibilidad en operaciones.",
+          solution: "Dashboard centralizado con actualizaciones en tiempo real y alertas automáticas.",
+          results: ["40% reducción en tiempos de gestión", "Visibilidad completa de operaciones", "Reportes automáticos diarios"],
+        },
+        project2: {
+          title: "E-commerce con IA",
+          client: "Tienda de moda online",
+          category: "E-commerce + Inteligencia Artificial",
+          description: "Plataforma de comercio electrónico con chatbot inteligente para atención al cliente y recomendaciones personalizadas.",
+          challenge: "Alto volumen de consultas repetitivas y baja tasa de conversión.",
+          solution: "Chatbot 24/7 que resuelve dudas y sugiere productos basados en preferencias.",
+          results: ["60% consultas resueltas por IA", "+25% en conversión", "Atención 24/7 sin costo adicional"],
+        },
+        project3: {
+          title: "Portal seguro de documentos",
+          client: "Despacho de abogados",
+          category: "Desarrollo Web + Ciberseguridad",
+          description: "Portal privado para compartir documentos sensibles con clientes, con autenticación robusta y trazabilidad.",
+          challenge: "Envío de documentos por email sin garantías de seguridad ni control de acceso.",
+          solution: "Portal con autenticación multifactor, encriptación y registro de accesos.",
+          results: ["Cumplimiento RGPD garantizado", "Trazabilidad completa", "Confianza del cliente"],
+        },
+        project4: {
+          title: "Landing page de alto impacto",
+          client: "Startup tecnológica",
+          category: "Desarrollo Web",
+          description: "Sitio web corporativo con diseño premium, optimizado para SEO y conversión de leads.",
+          challenge: "Presencia digital que no reflejaba la innovación de la empresa.",
+          solution: "Diseño moderno con animaciones fluidas y optimización de performance.",
+          results: ["+200% tráfico orgánico", "Tiempo de carga < 1s", "Mejor posicionamiento SEO"],
+        },
+      },
+    },
+    // About Page
+    aboutPage: {
+      sectionLabel: "Sobre nosotros",
+      title: "Tecnología con",
+      titleHighlight: "propósito",
+      subtitle: "Somos una agencia boutique que combina experiencia técnica con visión estratégica para crear soluciones que realmente funcionan.",
+      aboutLabel: "Sobre nosotros",
+      companyName: "GG Diseño",
+      description1: "Con más de una década de experiencia en desarrollo web y tecnología digital, GG Diseño nació con una visión clara: crear soluciones tecnológicas que realmente funcionen para los negocios.",
+      description2: "A lo largo de nuestra trayectoria hemos trabajado con empresas de todos los tamaños, desde startups hasta corporaciones, aprendiendo que lo más importante no es la tecnología en sí, sino cómo esta puede resolver problemas reales y generar valor.",
+      description3: "Hoy, GG Diseño combina esa experiencia con las últimas innovaciones en inteligencia artificial, automatización y seguridad web para ofrecer soluciones completas y de alto impacto.",
+      location: "Madrid, España",
+      availability: "Disponibilidad flexible",
+      experience: "+10 años de experiencia",
+      howWeWork: "Cómo trabajamos",
+      howWeWorkSubtitle: "Principios que guían cada proyecto y cada decisión.",
+      values: {
+        results: { title: "Orientación a resultados", description: "No hacemos tecnología por hacer. Cada solución está diseñada para generar impacto real en tu negocio." },
+        direct: { title: "Trato directo", description: "Sin intermediarios ni grandes estructuras. Hablas directamente con quien diseña y desarrolla tu proyecto." },
+        innovation: { title: "Innovación práctica", description: "Aplicamos las últimas tecnologías cuando realmente aportan valor, no por moda o tendencia." },
+        security: { title: "Seguridad integrada", description: "La seguridad no es un añadido, es parte fundamental de cada línea de código que escribimos." },
+      },
+      evolution: "Nuestra evolución",
+      timeline: {
+        t2014: { title: "Primeros pasos", description: "Inicio en desarrollo web y diseño digital trabajando con clientes locales." },
+        t2017: { title: "Especialización", description: "Enfoque en desarrollo frontend avanzado y experiencias de usuario." },
+        t2020: { title: "Automatización e IA", description: "Incorporación de automatizaciones y primeras integraciones con inteligencia artificial." },
+        t2023: { title: "GG Diseño", description: "Consolidación como agencia boutique tecnológica con foco en IA, automatización y seguridad." },
+        t2026: { title: "Perfeccionamiento continuo", description: "Nos perfeccionamos constantemente en inteligencia artificial y ciberseguridad para estar siempre al día con las últimas tecnologías." },
+      },
+      ctaTitle: "¿Trabajamos juntos?",
+      ctaSubtitle: "Si buscas un socio tecnológico que entienda tu negocio y te ayude a crecer, hablemos.",
+      ctaButton: "Empezar conversación",
+    },
+    // Contact Page
+    contactPage: {
+      sectionLabel: "Contacto",
+      title: "Hablemos de tu",
+      titleHighlight: "proyecto",
+      subtitle: "Contanos qué necesitas y veamos cómo la tecnología puede ayudarte a crecer. Sin compromiso.",
+      formTitle: "Solicitar presupuesto",
+      formSubtitle: "Completa el formulario y te responderemos en menos de 24 horas.",
+      name: "Nombre",
+      namePlaceholder: "Tu nombre",
+      email: "Email",
+      emailPlaceholder: "tu@email.com",
+      company: "Empresa",
+      companyPlaceholder: "Nombre de tu empresa (opcional)",
+      message: "Mensaje",
+      messagePlaceholder: "Contanos sobre tu proyecto, qué necesitas y cualquier detalle relevante...",
+      privacyConsent: "He leído y acepto la",
+      privacyPolicy: "Política de Privacidad",
+      privacyConsentEnd: "y consiento el tratamiento de mis datos personales para gestionar mi consulta.",
+      commercialConsent: "Acepto recibir comunicaciones comerciales y novedades de GG Diseño (puedes darte de baja en cualquier momento).",
+      required: "Campos obligatorios.",
+      responsible: "Responsable: GG Diseño. Finalidad: responder a tu consulta. Derechos: acceso, rectificación, supresión y otros según nuestra",
+      submit: "Enviar mensaje",
+      submitting: "Enviando...",
+      successTitle: "¡Mensaje enviado!",
+      successMessage: "Te responderemos en menos de 24 horas.",
+      consentRequired: "Consentimiento requerido",
+      consentRequiredMessage: "Debes aceptar la política de privacidad para enviar el formulario.",
+      otherWays: "Otras formas de contacto",
+      emailLabel: "Email",
+      whatsappLabel: "WhatsApp",
+      locationLabel: "Ubicación",
+      responseLabel: "Respuesta",
+      responseValue: "En menos de 24h",
+      preferWhatsapp: "¿Prefieres WhatsApp?",
+      preferWhatsappDesc: "Si es más cómodo para ti, podemos chatear directamente por WhatsApp.",
+      openWhatsapp: "Abrir WhatsApp",
+      faq: "Preguntas frecuentes",
+      faqs: {
+        q1: "¿Cuánto cuesta un proyecto?",
+        a1: "Cada proyecto es único, por eso preferimos conocer tus necesidades antes de dar un presupuesto. Trabajamos con diferentes rangos según la complejidad y alcance del proyecto.",
+        q2: "¿Cuánto tiempo tarda un proyecto?",
+        a2: "Depende del tipo de proyecto. Un sitio web puede estar listo en 2-4 semanas, mientras que una plataforma más compleja puede tomar 2-3 meses. Siempre acordamos plazos claros antes de empezar.",
+        q3: "¿Trabajan con empresas fuera de España?",
+        a3: "Sí, trabajamos con clientes en toda Europa. La comunicación se puede hacer en español o inglés, y usamos herramientas que facilitan la colaboración remota.",
+        q4: "¿Qué pasa después de entregar el proyecto?",
+        a4: "Ofrecemos mantenimiento y soporte continuo para que tu proyecto siga funcionando de forma óptima. También podemos implementar mejoras y nuevas funcionalidades según vayas necesitando.",
+      },
+    },
   },
   en: {
     nav: {
@@ -255,6 +461,208 @@ export const translations = {
       title: "Virtual Assistant",
       placeholder: "Type your message...",
       greeting: "Hello! I'm GG Diseño's virtual assistant. How can I help you today?",
+    },
+    servicesPage: {
+      sectionLabel: "Our services",
+      title: "Solutions that",
+      titleHighlight: "transform",
+      subtitle: "Each service is designed to solve real problems and generate measurable results for your business.",
+      requestInfo: "Request information",
+      whatIncludes: "What's included?",
+      problem: "Problem",
+      benefit: "Benefit",
+      result: "Result",
+      ctaTitle: "Can't find what you're looking for?",
+      ctaSubtitle: "Every project is unique. Tell us what you need and we'll design a custom solution for your business.",
+      ctaButton: "Let's talk about your project",
+      services: {
+        web: {
+          title: "Professional Web Development",
+          subtitle: "Websites that convert",
+          description: "We create modern, fast, and optimized websites that represent your brand and generate results.",
+          problem: "Your current website doesn't reflect your business quality or doesn't generate leads.",
+          benefit: "A professional digital presence that inspires trust and attracts clients.",
+          result: "More visits, more conversions, better brand image.",
+          features: ["Responsive and mobile-first design", "On-page SEO optimization", "High loading speed", "Analytics integration", "Easy-to-manage CMS"],
+        },
+        ecommerce: {
+          title: "E-commerce and Platforms",
+          subtitle: "Sell online without limits",
+          description: "Robust, secure online stores and digital platforms ready to scale.",
+          problem: "You need to sell online but generic solutions don't fit your business.",
+          benefit: "A custom platform that facilitates purchasing and maximizes sales.",
+          result: "Increased sales and better shopping experience for your customers.",
+          features: ["Optimized checkout", "Inventory management", "Secure payment gateways", "Logistics integration", "Complete admin panel"],
+        },
+        ai: {
+          title: "Artificial Intelligence",
+          subtitle: "AI that works for you",
+          description: "AI integration in your processes to automate, optimize, and scale.",
+          problem: "Repetitive tasks consume your team's time and resources.",
+          benefit: "AI applied practically and focused on business results.",
+          result: "More efficiency, better customer service, data-driven decisions.",
+          features: ["24/7 intelligent chatbots", "Response automation", "Data analysis with AI", "Personalized recommendations", "Integration with existing platforms"],
+        },
+        automation: {
+          title: "Automations",
+          subtitle: "Self-running processes",
+          description: "Workflow automation and tool connections to eliminate manual tasks.",
+          problem: "Your team wastes time on repetitive tasks that could be automated.",
+          benefit: "Automatic flows that work without human intervention.",
+          result: "Fewer errors, more time for what matters, reduced costs.",
+          features: ["Automatic lead capture", "Email marketing workflows", "Platform synchronization", "Automatic notifications", "Scheduled reports"],
+        },
+        security: {
+          title: "Web Cybersecurity",
+          subtitle: "Security by design",
+          description: "Implementation of web security best practices to protect your business and customers.",
+          problem: "Your website may have vulnerabilities that put sensitive data at risk.",
+          benefit: "Peace of mind knowing your platform is protected.",
+          result: "Secure data, regulatory compliance, customer trust.",
+          features: ["Security audit", "SSL/TLS certificates", "Attack protection", "Automatic backups", "GDPR compliance"],
+        },
+        maintenance: {
+          title: "Maintenance and Support",
+          subtitle: "Your website always up to date",
+          description: "Continuous maintenance, updates, and improvements to keep your website in optimal condition.",
+          problem: "Your site needs constant updates that you don't have time to manage.",
+          benefit: "A technical team that takes care of your website as if it were their own.",
+          result: "Website always running, secure, and updated.",
+          features: ["Security updates", "24/7 monitoring", "Periodic backups", "Priority technical support", "Continuous improvements"],
+        },
+      },
+    },
+    projectsPage: {
+      sectionLabel: "Our work",
+      title: "Projects that",
+      titleHighlight: "speak",
+      subtitle: "Real cases with measurable results. Each project represents a challenge overcome and a satisfied client.",
+      challenge: "Challenge",
+      solution: "Solution",
+      results: "Results",
+      client: "Client",
+      ctaTitle: "Your project could be next",
+      ctaSubtitle: "Tell us what challenge you face and let's work together to find the best solution.",
+      ctaButton: "Start a project",
+      projects: {
+        project1: {
+          title: "Business management system",
+          client: "Logistics company",
+          category: "Web Development + Automations",
+          description: "Comprehensive management platform with real-time dashboard, report automation, and delivery tracking.",
+          challenge: "Manual order management and lack of visibility in operations.",
+          solution: "Centralized dashboard with real-time updates and automatic alerts.",
+          results: ["40% reduction in management time", "Complete visibility of operations", "Daily automatic reports"],
+        },
+        project2: {
+          title: "E-commerce with AI",
+          client: "Online fashion store",
+          category: "E-commerce + Artificial Intelligence",
+          description: "E-commerce platform with intelligent chatbot for customer service and personalized recommendations.",
+          challenge: "High volume of repetitive queries and low conversion rate.",
+          solution: "24/7 chatbot that resolves doubts and suggests products based on preferences.",
+          results: ["60% queries resolved by AI", "+25% conversion", "24/7 support at no extra cost"],
+        },
+        project3: {
+          title: "Secure document portal",
+          client: "Law firm",
+          category: "Web Development + Cybersecurity",
+          description: "Private portal for sharing sensitive documents with clients, with robust authentication and traceability.",
+          challenge: "Sending documents by email without security guarantees or access control.",
+          solution: "Portal with multi-factor authentication, encryption, and access logging.",
+          results: ["GDPR compliance guaranteed", "Complete traceability", "Client trust"],
+        },
+        project4: {
+          title: "High-impact landing page",
+          client: "Tech startup",
+          category: "Web Development",
+          description: "Corporate website with premium design, optimized for SEO and lead conversion.",
+          challenge: "Digital presence that didn't reflect the company's innovation.",
+          solution: "Modern design with fluid animations and performance optimization.",
+          results: ["+200% organic traffic", "Load time < 1s", "Better SEO ranking"],
+        },
+      },
+    },
+    aboutPage: {
+      sectionLabel: "About us",
+      title: "Technology with",
+      titleHighlight: "purpose",
+      subtitle: "We are a boutique agency that combines technical expertise with strategic vision to create solutions that really work.",
+      aboutLabel: "About us",
+      companyName: "GG Diseño",
+      description1: "With over a decade of experience in web development and digital technology, GG Diseño was born with a clear vision: to create technological solutions that really work for businesses.",
+      description2: "Throughout our trajectory we have worked with companies of all sizes, from startups to corporations, learning that the most important thing is not the technology itself, but how it can solve real problems and generate value.",
+      description3: "Today, GG Diseño combines that experience with the latest innovations in artificial intelligence, automation, and web security to offer complete, high-impact solutions.",
+      location: "Madrid, Spain",
+      availability: "Flexible availability",
+      experience: "+10 years of experience",
+      howWeWork: "How we work",
+      howWeWorkSubtitle: "Principles that guide every project and every decision.",
+      values: {
+        results: { title: "Results-oriented", description: "We don't do technology for the sake of it. Every solution is designed to generate real impact on your business." },
+        direct: { title: "Direct communication", description: "No intermediaries or large structures. You talk directly with who designs and develops your project." },
+        innovation: { title: "Practical innovation", description: "We apply the latest technologies when they really add value, not because of fashion or trend." },
+        security: { title: "Integrated security", description: "Security is not an add-on, it's a fundamental part of every line of code we write." },
+      },
+      evolution: "Our evolution",
+      timeline: {
+        t2014: { title: "First steps", description: "Start in web development and digital design working with local clients." },
+        t2017: { title: "Specialization", description: "Focus on advanced frontend development and user experiences." },
+        t2020: { title: "Automation and AI", description: "Incorporation of automations and first integrations with artificial intelligence." },
+        t2023: { title: "GG Diseño", description: "Consolidation as a boutique tech agency focused on AI, automation, and security." },
+        t2026: { title: "Continuous improvement", description: "We constantly improve in artificial intelligence and cybersecurity to always stay up to date with the latest technologies." },
+      },
+      ctaTitle: "Shall we work together?",
+      ctaSubtitle: "If you're looking for a technology partner who understands your business and helps you grow, let's talk.",
+      ctaButton: "Start a conversation",
+    },
+    contactPage: {
+      sectionLabel: "Contact",
+      title: "Let's talk about your",
+      titleHighlight: "project",
+      subtitle: "Tell us what you need and let's see how technology can help you grow. No commitment.",
+      formTitle: "Request a quote",
+      formSubtitle: "Fill out the form and we'll respond within 24 hours.",
+      name: "Name",
+      namePlaceholder: "Your name",
+      email: "Email",
+      emailPlaceholder: "your@email.com",
+      company: "Company",
+      companyPlaceholder: "Your company name (optional)",
+      message: "Message",
+      messagePlaceholder: "Tell us about your project, what you need, and any relevant details...",
+      privacyConsent: "I have read and accept the",
+      privacyPolicy: "Privacy Policy",
+      privacyConsentEnd: "and consent to the processing of my personal data to manage my inquiry.",
+      commercialConsent: "I accept to receive commercial communications and news from GG Diseño (you can unsubscribe at any time).",
+      required: "Required fields.",
+      responsible: "Responsible: GG Diseño. Purpose: to respond to your inquiry. Rights: access, rectification, deletion, and others according to our",
+      submit: "Send message",
+      submitting: "Sending...",
+      successTitle: "Message sent!",
+      successMessage: "We'll respond within 24 hours.",
+      consentRequired: "Consent required",
+      consentRequiredMessage: "You must accept the privacy policy to submit the form.",
+      otherWays: "Other ways to contact us",
+      emailLabel: "Email",
+      whatsappLabel: "WhatsApp",
+      locationLabel: "Location",
+      responseLabel: "Response",
+      responseValue: "Within 24 hours",
+      preferWhatsapp: "Prefer WhatsApp?",
+      preferWhatsappDesc: "If it's more convenient, we can chat directly via WhatsApp.",
+      openWhatsapp: "Open WhatsApp",
+      faq: "Frequently asked questions",
+      faqs: {
+        q1: "How much does a project cost?",
+        a1: "Every project is unique, which is why we prefer to understand your needs before giving a quote. We work with different ranges depending on the complexity and scope of the project.",
+        q2: "How long does a project take?",
+        a2: "It depends on the type of project. A website can be ready in 2-4 weeks, while a more complex platform can take 2-3 months. We always agree on clear deadlines before starting.",
+        q3: "Do you work with companies outside Spain?",
+        a3: "Yes, we work with clients throughout Europe. Communication can be done in Spanish or English, and we use tools that facilitate remote collaboration.",
+        q4: "What happens after delivering the project?",
+        a4: "We offer ongoing maintenance and support so your project continues to work optimally. We can also implement improvements and new features as you need them.",
+      },
     },
   },
   pt: {
@@ -377,251 +785,144 @@ export const translations = {
       placeholder: "Digite sua mensagem...",
       greeting: "Olá! Sou o assistente virtual da GG Diseño. Como posso ajudá-lo hoje?",
     },
+    servicesPage: {
+      sectionLabel: "Nossos serviços",
+      title: "Soluções que",
+      titleHighlight: "transformam",
+      subtitle: "Cada serviço é projetado para resolver problemas reais e gerar resultados mensuráveis no seu negócio.",
+      requestInfo: "Solicitar informação",
+      whatIncludes: "O que inclui?",
+      problem: "Problema",
+      benefit: "Benefício",
+      result: "Resultado",
+      ctaTitle: "Não encontra o que procura?",
+      ctaSubtitle: "Cada projeto é único. Conte-nos o que precisa e projetamos uma solução sob medida para o seu negócio.",
+      ctaButton: "Vamos falar do seu projeto",
+      services: {
+        web: { title: "Desenvolvimento Web Profissional", subtitle: "Sites que convertem", description: "Criamos sites modernos, rápidos e otimizados que representam sua marca e geram resultados.", problem: "Seu site atual não reflete a qualidade do seu negócio ou não gera leads.", benefit: "Uma presença digital profissional que inspira confiança e atrai clientes.", result: "Mais visitas, mais conversões, melhor imagem de marca.", features: ["Design responsivo e mobile-first", "Otimização SEO on-page", "Alta velocidade de carregamento", "Integração com analytics", "CMS fácil de gerenciar"] },
+        ecommerce: { title: "E-commerce e Plataformas", subtitle: "Venda online sem limites", description: "Lojas online e plataformas digitais robustas, seguras e prontas para escalar.", problem: "Você precisa vender online mas as soluções genéricas não se adaptam ao seu negócio.", benefit: "Uma plataforma sob medida que facilita a compra e maximiza vendas.", result: "Aumento de vendas e melhor experiência de compra para seus clientes.", features: ["Checkout otimizado", "Gestão de inventário", "Gateways de pagamento seguros", "Integração com logística", "Painel de administração completo"] },
+        ai: { title: "Inteligência Artificial", subtitle: "IA que trabalha para você", description: "Integração de inteligência artificial nos seus processos para automatizar, otimizar e escalar.", problem: "Tarefas repetitivas consomem tempo e recursos da sua equipe.", benefit: "IA aplicada de forma prática e orientada a resultados de negócio.", result: "Mais eficiência, melhor atendimento ao cliente, decisões baseadas em dados.", features: ["Chatbots inteligentes 24/7", "Automação de respostas", "Análise de dados com IA", "Recomendações personalizadas", "Integração com plataformas existentes"] },
+        automation: { title: "Automações", subtitle: "Processos que funcionam sozinhos", description: "Automação de fluxos de trabalho e conexão entre ferramentas para eliminar tarefas manuais.", problem: "Sua equipe perde tempo em tarefas repetitivas que poderiam ser automatizadas.", benefit: "Fluxos automáticos que funcionam sem intervenção humana.", result: "Menos erros, mais tempo para o importante, custos reduzidos.", features: ["Captação automática de leads", "Workflows de email marketing", "Sincronização entre plataformas", "Notificações automáticas", "Relatórios programados"] },
+        security: { title: "Cibersegurança Web", subtitle: "Segurança desde o design", description: "Implementação de boas práticas de segurança web para proteger seu negócio e seus clientes.", problem: "Seu site pode ter vulnerabilidades que colocam em risco dados sensíveis.", benefit: "Tranquilidade de saber que sua plataforma está protegida.", result: "Dados seguros, conformidade regulatória, confiança do cliente.", features: ["Auditoria de segurança", "Certificados SSL/TLS", "Proteção contra ataques", "Backups automáticos", "Conformidade RGPD"] },
+        maintenance: { title: "Manutenção e Suporte", subtitle: "Seu site sempre atualizado", description: "Serviço contínuo de manutenção, atualizações e melhorias para manter seu site em ótimas condições.", problem: "Seu site precisa de atualizações constantes que você não tem tempo de gerenciar.", benefit: "Uma equipe técnica que cuida do seu site como se fosse dela.", result: "Site sempre funcionando, seguro e atualizado.", features: ["Atualizações de segurança", "Monitoramento 24/7", "Backups periódicos", "Suporte técnico prioritário", "Melhorias contínuas"] },
+      },
+    },
+    projectsPage: {
+      sectionLabel: "Nosso trabalho",
+      title: "Projetos que",
+      titleHighlight: "falam",
+      subtitle: "Casos reais com resultados mensuráveis. Cada projeto representa um desafio superado e um cliente satisfeito.",
+      challenge: "Desafio",
+      solution: "Solução",
+      results: "Resultados",
+      client: "Cliente",
+      ctaTitle: "Seu projeto pode ser o próximo",
+      ctaSubtitle: "Conte-nos qual desafio enfrenta e vamos trabalhar juntos para encontrar a melhor solução.",
+      ctaButton: "Iniciar um projeto",
+      projects: {
+        project1: { title: "Sistema de gestão empresarial", client: "Empresa de logística", category: "Desenvolvimento Web + Automações", description: "Plataforma integral de gestão com dashboard em tempo real, automação de relatórios e rastreamento de entregas.", challenge: "Gestão manual de pedidos e falta de visibilidade nas operações.", solution: "Dashboard centralizado com atualizações em tempo real e alertas automáticos.", results: ["40% redução em tempos de gestão", "Visibilidade completa das operações", "Relatórios automáticos diários"] },
+        project2: { title: "E-commerce com IA", client: "Loja de moda online", category: "E-commerce + Inteligência Artificial", description: "Plataforma de comércio eletrônico com chatbot inteligente para atendimento ao cliente e recomendações personalizadas.", challenge: "Alto volume de consultas repetitivas e baixa taxa de conversão.", solution: "Chatbot 24/7 que resolve dúvidas e sugere produtos baseados em preferências.", results: ["60% consultas resolvidas por IA", "+25% em conversão", "Atendimento 24/7 sem custo adicional"] },
+        project3: { title: "Portal seguro de documentos", client: "Escritório de advocacia", category: "Desenvolvimento Web + Cibersegurança", description: "Portal privado para compartilhar documentos sensíveis com clientes, com autenticação robusta e rastreabilidade.", challenge: "Envio de documentos por email sem garantias de segurança nem controle de acesso.", solution: "Portal com autenticação multifator, criptografia e registro de acessos.", results: ["Conformidade RGPD garantida", "Rastreabilidade completa", "Confiança do cliente"] },
+        project4: { title: "Landing page de alto impacto", client: "Startup tecnológica", category: "Desenvolvimento Web", description: "Site corporativo com design premium, otimizado para SEO e conversão de leads.", challenge: "Presença digital que não refletia a inovação da empresa.", solution: "Design moderno com animações fluidas e otimização de performance.", results: ["+200% tráfego orgânico", "Tempo de carregamento < 1s", "Melhor posicionamento SEO"] },
+      },
+    },
+    aboutPage: {
+      sectionLabel: "Sobre nós",
+      title: "Tecnologia com",
+      titleHighlight: "propósito",
+      subtitle: "Somos uma agência boutique que combina experiência técnica com visão estratégica para criar soluções que realmente funcionam.",
+      aboutLabel: "Sobre nós",
+      companyName: "GG Diseño",
+      description1: "Com mais de uma década de experiência em desenvolvimento web e tecnologia digital, GG Diseño nasceu com uma visão clara: criar soluções tecnológicas que realmente funcionem para os negócios.",
+      description2: "Ao longo da nossa trajetória trabalhamos com empresas de todos os tamanhos, de startups a corporações, aprendendo que o mais importante não é a tecnologia em si, mas como ela pode resolver problemas reais e gerar valor.",
+      description3: "Hoje, GG Diseño combina essa experiência com as últimas inovações em inteligência artificial, automação e segurança web para oferecer soluções completas e de alto impacto.",
+      location: "Madrid, Espanha",
+      availability: "Disponibilidade flexível",
+      experience: "+10 anos de experiência",
+      howWeWork: "Como trabalhamos",
+      howWeWorkSubtitle: "Princípios que guiam cada projeto e cada decisão.",
+      values: {
+        results: { title: "Orientação a resultados", description: "Não fazemos tecnologia por fazer. Cada solução é projetada para gerar impacto real no seu negócio." },
+        direct: { title: "Trato direto", description: "Sem intermediários nem grandes estruturas. Você fala diretamente com quem projeta e desenvolve seu projeto." },
+        innovation: { title: "Inovação prática", description: "Aplicamos as últimas tecnologias quando realmente agregam valor, não por moda ou tendência." },
+        security: { title: "Segurança integrada", description: "A segurança não é um adicional, é parte fundamental de cada linha de código que escrevemos." },
+      },
+      evolution: "Nossa evolução",
+      timeline: {
+        t2014: { title: "Primeiros passos", description: "Início em desenvolvimento web e design digital trabalhando com clientes locais." },
+        t2017: { title: "Especialização", description: "Foco em desenvolvimento frontend avançado e experiências de usuário." },
+        t2020: { title: "Automação e IA", description: "Incorporação de automações e primeiras integrações com inteligência artificial." },
+        t2023: { title: "GG Diseño", description: "Consolidação como agência boutique tecnológica com foco em IA, automação e segurança." },
+        t2026: { title: "Aperfeiçoamento contínuo", description: "Nos aperfeiçoamos constantemente em inteligência artificial e cibersegurança para estar sempre atualizados com as últimas tecnologias." },
+      },
+      ctaTitle: "Vamos trabalhar juntos?",
+      ctaSubtitle: "Se você procura um parceiro tecnológico que entenda seu negócio e ajude você a crescer, vamos conversar.",
+      ctaButton: "Iniciar conversa",
+    },
+    contactPage: {
+      sectionLabel: "Contato",
+      title: "Vamos falar do seu",
+      titleHighlight: "projeto",
+      subtitle: "Conte-nos o que precisa e vamos ver como a tecnologia pode ajudá-lo a crescer. Sem compromisso.",
+      formTitle: "Solicitar orçamento",
+      formSubtitle: "Preencha o formulário e responderemos em menos de 24 horas.",
+      name: "Nome",
+      namePlaceholder: "Seu nome",
+      email: "Email",
+      emailPlaceholder: "seu@email.com",
+      company: "Empresa",
+      companyPlaceholder: "Nome da sua empresa (opcional)",
+      message: "Mensagem",
+      messagePlaceholder: "Conte-nos sobre seu projeto, o que precisa e qualquer detalhe relevante...",
+      privacyConsent: "Li e aceito a",
+      privacyPolicy: "Política de Privacidade",
+      privacyConsentEnd: "e consinto o tratamento dos meus dados pessoais para gerenciar minha consulta.",
+      commercialConsent: "Aceito receber comunicações comerciais e novidades da GG Diseño (pode cancelar a qualquer momento).",
+      required: "Campos obrigatórios.",
+      responsible: "Responsável: GG Diseño. Finalidade: responder à sua consulta. Direitos: acesso, retificação, supressão e outros segundo nossa",
+      submit: "Enviar mensagem",
+      submitting: "Enviando...",
+      successTitle: "Mensagem enviada!",
+      successMessage: "Responderemos em menos de 24 horas.",
+      consentRequired: "Consentimento necessário",
+      consentRequiredMessage: "Você deve aceitar a política de privacidade para enviar o formulário.",
+      otherWays: "Outras formas de contato",
+      emailLabel: "Email",
+      whatsappLabel: "WhatsApp",
+      locationLabel: "Localização",
+      responseLabel: "Resposta",
+      responseValue: "Em menos de 24h",
+      preferWhatsapp: "Prefere WhatsApp?",
+      preferWhatsappDesc: "Se for mais cômodo, podemos conversar diretamente pelo WhatsApp.",
+      openWhatsapp: "Abrir WhatsApp",
+      faq: "Perguntas frequentes",
+      faqs: {
+        q1: "Quanto custa um projeto?",
+        a1: "Cada projeto é único, por isso preferimos conhecer suas necessidades antes de dar um orçamento. Trabalhamos com diferentes faixas dependendo da complexidade e escopo do projeto.",
+        q2: "Quanto tempo leva um projeto?",
+        a2: "Depende do tipo de projeto. Um site pode estar pronto em 2-4 semanas, enquanto uma plataforma mais complexa pode levar 2-3 meses. Sempre acordamos prazos claros antes de começar.",
+        q3: "Vocês trabalham com empresas fora da Espanha?",
+        a3: "Sim, trabalhamos com clientes em toda a Europa. A comunicação pode ser em espanhol ou inglês, e usamos ferramentas que facilitam a colaboração remota.",
+        q4: "O que acontece depois de entregar o projeto?",
+        a4: "Oferecemos manutenção e suporte contínuo para que seu projeto continue funcionando de forma ótima. Também podemos implementar melhorias e novas funcionalidades conforme você precisar.",
+      },
+    },
   },
   zh: {
-    nav: {
-      home: "首页",
-      services: "服务",
-      projects: "项目",
-      about: "关于我们",
-      contact: "联系我们",
-      requestQuote: "请求报价",
-    },
-    hero: {
-      badge: "马德里精品科技机构",
-      headline1: "网络解决方案",
-      headline2: "智能",
-      headline3: "自动化且",
-      headline4: "安全",
-      subtitle: "我们设计和开发数字解决方案，推动您在西班牙和欧洲的业务增长。",
-      cta1: "请求报价",
-      cta2: "查看项目",
-      pillar1: "人工智能",
-      pillar2: "自动化",
-      pillar3: "网络安全",
-    },
-    pillars: {
-      sectionLabel: "我们的支柱",
-      title: "改变一切的技术",
-      subtitle: "三大基本支柱，确保高效、安全、面向未来的数字解决方案。",
-      learnMore: "了解更多",
-      ai: {
-        title: "人工智能",
-        description: "在网站和平台中集成人工智能。智能聊天机器人、响应自动化和以转化为导向的流程。",
-        feature1: "客户服务聊天机器人",
-        feature2: "响应自动化",
-        feature3: "应用于转化的人工智能",
-      },
-      automation: {
-        title: "自动化",
-        description: "数字流程自动化和平台集成。减少手动任务、错误和运营成本。",
-        feature1: "自动化潜在客户捕获流程",
-        feature2: "系统集成",
-        feature3: "节省时间和成本",
-      },
-      security: {
-        title: "网络安全",
-        description: "从设计开始就确保网站安全。数据保护、漏洞预防和网络安全最佳实践。",
-        feature1: "安全设计",
-        feature2: "数据保护",
-        feature3: "漏洞预防",
-      },
-    },
-    benefits: {
-      sectionLabel: "具体优势",
-      title: "真正",
-      titleHighlight: "重要的",
-      subtitle: "我们开发的每个解决方案都旨在为您的业务产生真正的影响。我们不是为了技术而技术，我们做的是有效的技术。",
-      stat1Value: "+10",
-      stat1Label: "年经验",
-      stat2Value: "100%",
-      stat2Label: "项目交付",
-      benefit1Title: "更高效率",
-      benefit1Desc: "优化流程，减少业务运营中的时间和资源消耗。",
-      benefit2Title: "更高安全性",
-      benefit2Desc: "从开发第一天起就全面保护数据和系统。",
-      benefit3Title: "更少手动任务",
-      benefit3Desc: "自动化使您的团队能够专注于重要的事情。",
-      benefit4Title: "更好的转化",
-      benefit4Desc: "旨在最大化结果和投资回报的解决方案。",
-    },
-    projects: {
-      sectionLabel: "精选项目",
-      title: "会说话的作品",
-      viewAll: "查看全部",
-      project1: {
-        title: "人工智能电商",
-        category: "网站开发 + 人工智能",
-        description: "具有智能聊天机器人和个性化推荐的电子商务平台。",
-      },
-      project2: {
-        title: "自动化系统",
-        category: "自动化",
-        description: "与CRM和邮件营销集成的自动化潜在客户捕获流程。",
-      },
-      project3: {
-        title: "安全企业门户",
-        category: "网络安全",
-        description: "具有多因素认证和安全文档管理的内部门户。",
-      },
-    },
-    cta: {
-      title1: "准备好",
-      titleHighlight: "推动",
-      title2: "您的业务了吗？",
-      subtitle: "告诉我们您的项目，让我们看看技术如何帮助您成长。无需承诺，只是一次对话。",
-      button1: "请求报价",
-      button2: "WhatsApp",
-    },
-    footer: {
-      description: "精品科技机构。为西班牙和欧洲的企业提供智能、自动化和安全的网络解决方案。",
-      services: "服务",
-      webDev: "网站开发",
-      ai: "人工智能",
-      automation: "自动化",
-      security: "网络安全",
-      company: "公司",
-      aboutUs: "关于我们",
-      projects: "项目",
-      contact: "联系我们",
-      talkTitle: "让我们聊聊？",
-      talkDescription: "告诉我们您的项目，让我们看看技术如何帮助您成长。",
-      requestQuote: "请求报价",
-      copyright: "版权所有。",
-      privacy: "隐私",
-      cookies: "Cookies",
-      legal: "法律声明",
-      configureCookies: "配置Cookies",
-    },
-    chatbot: {
-      title: "虚拟助手",
-      placeholder: "输入您的消息...",
-      greeting: "您好！我是GG Diseño的虚拟助手。今天我能帮您什么？",
-    },
+    nav: { home: "首页", services: "服务", projects: "项目", about: "关于我们", contact: "联系我们", requestQuote: "请求报价" },
+    hero: { badge: "马德里精品科技机构", headline1: "网络解决方案", headline2: "智能", headline3: "自动化且", headline4: "安全", subtitle: "我们设计和开发数字解决方案，推动您在西班牙和欧洲的业务增长。", cta1: "请求报价", cta2: "查看项目", pillar1: "人工智能", pillar2: "自动化", pillar3: "网络安全" },
+    pillars: { sectionLabel: "我们的支柱", title: "改变一切的技术", subtitle: "三大基本支柱，确保高效、安全、面向未来的数字解决方案。", learnMore: "了解更多", ai: { title: "人工智能", description: "在网站和平台中集成人工智能。智能聊天机器人、响应自动化和以转化为导向的流程。", feature1: "客户服务聊天机器人", feature2: "响应自动化", feature3: "应用于转化的人工智能" }, automation: { title: "自动化", description: "数字流程自动化和平台集成。减少手动任务、错误和运营成本。", feature1: "自动化潜在客户捕获流程", feature2: "系统集成", feature3: "节省时间和成本" }, security: { title: "网络安全", description: "从设计开始就确保网站安全。数据保护、漏洞预防和网络安全最佳实践。", feature1: "安全设计", feature2: "数据保护", feature3: "漏洞预防" } },
+    benefits: { sectionLabel: "具体优势", title: "真正", titleHighlight: "重要的", subtitle: "我们开发的每个解决方案都旨在为您的业务产生真正的影响。我们不是为了技术而技术，我们做的是有效的技术。", stat1Value: "+10", stat1Label: "年经验", stat2Value: "100%", stat2Label: "项目交付", benefit1Title: "更高效率", benefit1Desc: "优化流程，减少业务运营中的时间和资源消耗。", benefit2Title: "更高安全性", benefit2Desc: "从开发第一天起就全面保护数据和系统。", benefit3Title: "更少手动任务", benefit3Desc: "自动化使您的团队能够专注于重要的事情。", benefit4Title: "更好的转化", benefit4Desc: "旨在最大化结果和投资回报的解决方案。" },
+    projects: { sectionLabel: "精选项目", title: "会说话的作品", viewAll: "查看全部", project1: { title: "人工智能电商", category: "网站开发 + 人工智能", description: "具有智能聊天机器人和个性化推荐的电子商务平台。" }, project2: { title: "自动化系统", category: "自动化", description: "与CRM和邮件营销集成的自动化潜在客户捕获流程。" }, project3: { title: "安全企业门户", category: "网络安全", description: "具有多因素认证和安全文档管理的内部门户。" } },
+    cta: { title1: "准备好", titleHighlight: "推动", title2: "您的业务了吗？", subtitle: "告诉我们您的项目，让我们看看技术如何帮助您成长。无需承诺，只是一次对话。", button1: "请求报价", button2: "WhatsApp" },
+    footer: { description: "精品科技机构。为西班牙和欧洲的企业提供智能、自动化和安全的网络解决方案。", services: "服务", webDev: "网站开发", ai: "人工智能", automation: "自动化", security: "网络安全", company: "公司", aboutUs: "关于我们", projects: "项目", contact: "联系我们", talkTitle: "让我们聊聊？", talkDescription: "告诉我们您的项目，让我们看看技术如何帮助您成长。", requestQuote: "请求报价", copyright: "版权所有。", privacy: "隐私", cookies: "Cookies", legal: "法律声明", configureCookies: "配置Cookies" },
+    chatbot: { title: "虚拟助手", placeholder: "输入您的消息...", greeting: "您好！我是GG Diseño的虚拟助手。今天我能帮您什么？" },
+    servicesPage: { sectionLabel: "我们的服务", title: "解决方案", titleHighlight: "转型", subtitle: "每项服务都旨在解决实际问题并为您的业务产生可衡量的结果。", requestInfo: "请求信息", whatIncludes: "包含什么？", problem: "问题", benefit: "优势", result: "结果", ctaTitle: "找不到您想要的？", ctaSubtitle: "每个项目都是独特的。告诉我们您需要什么，我们将为您的业务设计定制解决方案。", ctaButton: "让我们谈谈您的项目", services: { web: { title: "专业网站开发", subtitle: "转化的网站", description: "我们创建现代、快速、优化的网站，代表您的品牌并产生结果。", problem: "您当前的网站不能反映您业务的质量或不能产生潜在客户。", benefit: "激发信任并吸引客户的专业数字形象。", result: "更多访问、更多转化、更好的品牌形象。", features: ["响应式和移动优先设计", "页面SEO优化", "高加载速度", "分析集成", "易于管理的CMS"] }, ecommerce: { title: "电商和平台", subtitle: "无限在线销售", description: "强大、安全且可扩展的在线商店和数字平台。", problem: "您需要在线销售，但通用解决方案不适合您的业务。", benefit: "促进购买和最大化销售的定制平台。", result: "增加销售并为客户提供更好的购物体验。", features: ["优化结账", "库存管理", "安全支付网关", "物流集成", "完整管理面板"] }, ai: { title: "人工智能", subtitle: "为您工作的AI", description: "将人工智能集成到您的流程中以实现自动化、优化和扩展。", problem: "重复性任务消耗您团队的时间和资源。", benefit: "以实际且专注于业务结果的方式应用AI。", result: "更高效率、更好的客户服务、数据驱动的决策。", features: ["24/7智能聊天机器人", "响应自动化", "AI数据分析", "个性化推荐", "与现有平台集成"] }, automation: { title: "自动化", subtitle: "自运行流程", description: "工作流自动化和工具连接以消除手动任务。", problem: "您的团队在可以自动化的重复性任务上浪费时间。", benefit: "无需人工干预即可运行的自动流程。", result: "更少错误、更多时间用于重要事项、降低成本。", features: ["自动潜在客户捕获", "邮件营销工作流", "平台同步", "自动通知", "定时报告"] }, security: { title: "网络安全", subtitle: "安全设计", description: "实施网络安全最佳实践以保护您的业务和客户。", problem: "您的网站可能存在使敏感数据面临风险的漏洞。", benefit: "知道您的平台受到保护的安心。", result: "安全数据、法规遵从、客户信任。", features: ["安全审计", "SSL/TLS证书", "攻击防护", "自动备份", "GDPR合规"] }, maintenance: { title: "维护和支持", subtitle: "您的网站始终保持最新", description: "持续维护、更新和改进服务，使您的网站保持最佳状态。", problem: "您的网站需要持续更新，而您没有时间管理。", benefit: "像对待自己的网站一样照顾您网站的技术团队。", result: "网站始终运行、安全且更新。", features: ["安全更新", "24/7监控", "定期备份", "优先技术支持", "持续改进"] } } },
+    projectsPage: { sectionLabel: "我们的作品", title: "会说话的", titleHighlight: "项目", subtitle: "具有可衡量结果的真实案例。每个项目都代表着克服的挑战和满意的客户。", challenge: "挑战", solution: "解决方案", results: "结果", client: "客户", ctaTitle: "您的项目可能是下一个", ctaSubtitle: "告诉我们您面临的挑战，让我们一起找到最佳解决方案。", ctaButton: "开始一个项目", projects: { project1: { title: "企业管理系统", client: "物流公司", category: "网站开发 + 自动化", description: "具有实时仪表板、报告自动化和交付跟踪的综合管理平台。", challenge: "手动订单管理和运营缺乏可见性。", solution: "具有实时更新和自动警报的集中仪表板。", results: ["管理时间减少40%", "运营完全可见", "每日自动报告"] }, project2: { title: "AI电商", client: "在线时尚商店", category: "电商 + 人工智能", description: "具有智能聊天机器人客服和个性化推荐的电商平台。", challenge: "大量重复咨询和低转化率。", solution: "24/7聊天机器人解决疑问并根据偏好推荐产品。", results: ["60%咨询由AI解决", "转化率+25%", "24/7支持无额外费用"] }, project3: { title: "安全文档门户", client: "律师事务所", category: "网站开发 + 网络安全", description: "用于与客户共享敏感文档的私人门户，具有强大的身份验证和可追溯性。", challenge: "通过电子邮件发送文档没有安全保障或访问控制。", solution: "具有多因素身份验证、加密和访问日志的门户。", results: ["保证GDPR合规", "完整可追溯性", "客户信任"] }, project4: { title: "高影响力着陆页", client: "科技创业公司", category: "网站开发", description: "具有高级设计的企业网站，针对SEO和潜在客户转化进行优化。", challenge: "数字形象不能反映公司的创新。", solution: "具有流畅动画和性能优化的现代设计。", results: ["有机流量+200%", "加载时间<1秒", "更好的SEO排名"] } } },
+    aboutPage: { sectionLabel: "关于我们", title: "有", titleHighlight: "目的", subtitle: "我们是一家精品机构，结合技术专长和战略愿景，创造真正有效的解决方案。", aboutLabel: "关于我们", companyName: "GG Diseño", description1: "凭借十多年的网站开发和数字技术经验，GG Diseño诞生于一个明确的愿景：创造真正适用于企业的技术解决方案。", description2: "在我们的发展过程中，我们与各种规模的公司合作，从初创公司到大型企业，了解到最重要的不是技术本身，而是它如何解决实际问题并创造价值。", description3: "如今，GG Diseño将这些经验与人工智能、自动化和网络安全的最新创新相结合，提供完整的高影响力解决方案。", location: "马德里，西班牙", availability: "灵活可用", experience: "10年以上经验", howWeWork: "我们如何工作", howWeWorkSubtitle: "指导每个项目和每个决策的原则。", values: { results: { title: "以结果为导向", description: "我们不是为了技术而技术。每个解决方案都旨在为您的业务产生真正的影响。" }, direct: { title: "直接沟通", description: "没有中间人或大型结构。您直接与设计和开发项目的人交谈。" }, innovation: { title: "实用创新", description: "我们在真正增加价值时应用最新技术，而不是因为时尚或趋势。" }, security: { title: "集成安全", description: "安全不是附加功能，它是我们编写的每一行代码的基本组成部分。" } }, evolution: "我们的发展", timeline: { t2014: { title: "第一步", description: "开始为本地客户进行网站开发和数字设计。" }, t2017: { title: "专业化", description: "专注于高级前端开发和用户体验。" }, t2020: { title: "自动化和AI", description: "引入自动化和首次人工智能集成。" }, t2023: { title: "GG Diseño", description: "巩固为专注于AI、自动化和安全的精品科技机构。" }, t2026: { title: "持续改进", description: "我们不断完善人工智能和网络安全技能，始终与最新技术保持同步。" } }, ctaTitle: "我们一起工作吗？", ctaSubtitle: "如果您正在寻找一个理解您业务并帮助您成长的技术合作伙伴，让我们谈谈。", ctaButton: "开始对话" },
+    contactPage: { sectionLabel: "联系", title: "让我们谈谈您的", titleHighlight: "项目", subtitle: "告诉我们您需要什么，让我们看看技术如何帮助您成长。无需承诺。", formTitle: "请求报价", formSubtitle: "填写表格，我们将在24小时内回复。", name: "姓名", namePlaceholder: "您的姓名", email: "电子邮件", emailPlaceholder: "your@email.com", company: "公司", companyPlaceholder: "您的公司名称（可选）", message: "消息", messagePlaceholder: "告诉我们您的项目、您需要什么以及任何相关细节...", privacyConsent: "我已阅读并接受", privacyPolicy: "隐私政策", privacyConsentEnd: "并同意处理我的个人数据以管理我的咨询。", commercialConsent: "我接受接收GG Diseño的商业通讯和新闻（您可以随时取消订阅）。", required: "必填字段。", responsible: "负责人：GG Diseño。目的：回复您的咨询。权利：访问、更正、删除等，根据我们的", submit: "发送消息", submitting: "发送中...", successTitle: "消息已发送！", successMessage: "我们将在24小时内回复。", consentRequired: "需要同意", consentRequiredMessage: "您必须接受隐私政策才能提交表格。", otherWays: "其他联系方式", emailLabel: "电子邮件", whatsappLabel: "WhatsApp", locationLabel: "位置", responseLabel: "响应", responseValue: "24小时内", preferWhatsapp: "更喜欢WhatsApp？", preferWhatsappDesc: "如果更方便，我们可以直接通过WhatsApp聊天。", openWhatsapp: "打开WhatsApp", faq: "常见问题", faqs: { q1: "一个项目要多少钱？", a1: "每个项目都是独特的，这就是为什么我们更愿意在报价之前了解您的需求。我们根据项目的复杂性和范围使用不同的价格范围。", q2: "一个项目需要多长时间？", a2: "这取决于项目类型。网站可以在2-4周内准备好，而更复杂的平台可能需要2-3个月。我们总是在开始之前商定明确的截止日期。", q3: "你们与西班牙以外的公司合作吗？", a3: "是的，我们与整个欧洲的客户合作。沟通可以用西班牙语或英语进行，我们使用促进远程协作的工具。", q4: "交付项目后会发生什么？", a4: "我们提供持续的维护和支持，以确保您的项目继续以最佳方式运行。我们还可以根据您的需要实施改进和新功能。" } },
   },
 } as const;
 
-// Create a generic type for translations
-type TranslationStrings = {
-  nav: {
-    home: string;
-    services: string;
-    projects: string;
-    about: string;
-    contact: string;
-    requestQuote: string;
-  };
-  hero: {
-    badge: string;
-    headline1: string;
-    headline2: string;
-    headline3: string;
-    headline4: string;
-    subtitle: string;
-    cta1: string;
-    cta2: string;
-    pillar1: string;
-    pillar2: string;
-    pillar3: string;
-  };
-  pillars: {
-    sectionLabel: string;
-    title: string;
-    subtitle: string;
-    learnMore: string;
-    ai: {
-      title: string;
-      description: string;
-      feature1: string;
-      feature2: string;
-      feature3: string;
-    };
-    automation: {
-      title: string;
-      description: string;
-      feature1: string;
-      feature2: string;
-      feature3: string;
-    };
-    security: {
-      title: string;
-      description: string;
-      feature1: string;
-      feature2: string;
-      feature3: string;
-    };
-  };
-  benefits: {
-    sectionLabel: string;
-    title: string;
-    titleHighlight: string;
-    subtitle: string;
-    stat1Value: string;
-    stat1Label: string;
-    stat2Value: string;
-    stat2Label: string;
-    benefit1Title: string;
-    benefit1Desc: string;
-    benefit2Title: string;
-    benefit2Desc: string;
-    benefit3Title: string;
-    benefit3Desc: string;
-    benefit4Title: string;
-    benefit4Desc: string;
-  };
-  projects: {
-    sectionLabel: string;
-    title: string;
-    viewAll: string;
-    project1: {
-      title: string;
-      category: string;
-      description: string;
-    };
-    project2: {
-      title: string;
-      category: string;
-      description: string;
-    };
-    project3: {
-      title: string;
-      category: string;
-      description: string;
-    };
-  };
-  cta: {
-    title1: string;
-    titleHighlight: string;
-    title2: string;
-    subtitle: string;
-    button1: string;
-    button2: string;
-  };
-  footer: {
-    description: string;
-    services: string;
-    webDev: string;
-    ai: string;
-    automation: string;
-    security: string;
-    company: string;
-    aboutUs: string;
-    projects: string;
-    contact: string;
-    talkTitle: string;
-    talkDescription: string;
-    requestQuote: string;
-    copyright: string;
-    privacy: string;
-    cookies: string;
-    legal: string;
-    configureCookies: string;
-  };
-  chatbot: {
-    title: string;
-    placeholder: string;
-    greeting: string;
-  };
-};
-
+type TranslationStrings = typeof translations.es;
 export type Translations = TranslationStrings;
