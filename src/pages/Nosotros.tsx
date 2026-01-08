@@ -48,6 +48,11 @@ const timeline = [
     title: "GG Diseño",
     description: "Consolidación como agencia boutique tecnológica con foco en IA, automatización y seguridad.",
   },
+  {
+    year: "2026",
+    title: "Perfeccionamiento continuo",
+    description: "Nos perfeccionamos constantemente en inteligencia artificial y ciberseguridad para estar siempre al día con las últimas tecnologías.",
+  },
 ];
 
 export default function Nosotros() {
@@ -87,68 +92,50 @@ export default function Nosotros() {
         </div>
       </section>
 
-      {/* Founder Section */}
+      {/* About Section */}
       <section className="py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="grid lg:grid-cols-2 gap-12 items-center"
+            className="max-w-3xl mx-auto"
           >
-            {/* Image */}
-            <div className="relative">
-              <div className="aspect-[4/5] rounded-2xl glass overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-32 h-32 rounded-full bg-gradient-primary flex items-center justify-center font-display font-bold text-primary-foreground text-4xl">
-                    GG
-                  </div>
-                </div>
-              </div>
-              {/* Floating badges */}
-              <div className="absolute -bottom-4 -right-4 px-6 py-3 rounded-xl glass">
-                <div className="flex items-center gap-3">
-                  <Award className="text-primary" size={20} />
-                  <span className="font-display font-semibold">+10 años</span>
-                </div>
-              </div>
+            <span className="text-primary text-sm font-medium">Sobre nosotros</span>
+            <h2 className="font-display text-3xl sm:text-4xl font-bold mt-2 mb-6">
+              GG Diseño
+            </h2>
+            <div className="space-y-4 text-muted-foreground">
+              <p>
+                Con más de una década de experiencia en desarrollo web y tecnología digital, 
+                GG Diseño nació con una visión clara: crear soluciones tecnológicas que 
+                realmente funcionen para los negocios.
+              </p>
+              <p>
+                A lo largo de nuestra trayectoria hemos trabajado con empresas de todos los tamaños, 
+                desde startups hasta corporaciones, aprendiendo que lo más importante 
+                no es la tecnología en sí, sino cómo esta puede resolver problemas 
+                reales y generar valor.
+              </p>
+              <p>
+                Hoy, GG Diseño combina esa experiencia con las últimas innovaciones 
+                en inteligencia artificial, automatización y seguridad web para 
+                ofrecer soluciones completas y de alto impacto.
+              </p>
             </div>
 
-            {/* Content */}
-            <div>
-              <span className="text-primary text-sm font-medium">Sobre nosotros</span>
-              <h2 className="font-display text-3xl sm:text-4xl font-bold mt-2 mb-6">
-                GG Diseño
-              </h2>
-              <div className="space-y-4 text-muted-foreground">
-                <p>
-                  Con más de una década de experiencia en desarrollo web y tecnología digital, 
-                  GG Diseño nació con una visión clara: crear soluciones tecnológicas que 
-                  realmente funcionen para los negocios.
-                </p>
-                <p>
-                  A lo largo de nuestra trayectoria hemos trabajado con empresas de todos los tamaños, 
-                  desde startups hasta corporaciones, aprendiendo que lo más importante 
-                  no es la tecnología en sí, sino cómo esta puede resolver problemas 
-                  reales y generar valor.
-                </p>
-                <p>
-                  Hoy, GG Diseño combina esa experiencia con las últimas innovaciones 
-                  en inteligencia artificial, automatización y seguridad web para 
-                  ofrecer soluciones completas y de alto impacto.
-                </p>
+            <div className="flex items-center gap-6 mt-8">
+              <div className="flex items-center gap-2 text-muted-foreground">
+                <MapPin size={16} className="text-primary" />
+                <span className="text-sm">Madrid, España</span>
               </div>
-
-              <div className="flex items-center gap-6 mt-8">
-                <div className="flex items-center gap-2 text-muted-foreground">
-                  <MapPin size={16} className="text-primary" />
-                  <span className="text-sm">Madrid, España</span>
-                </div>
-                <div className="flex items-center gap-2 text-muted-foreground">
-                  <Clock size={16} className="text-primary" />
-                  <span className="text-sm">Disponibilidad flexible</span>
-                </div>
+              <div className="flex items-center gap-2 text-muted-foreground">
+                <Clock size={16} className="text-primary" />
+                <span className="text-sm">Disponibilidad flexible</span>
+              </div>
+              <div className="flex items-center gap-2 text-muted-foreground">
+                <Award size={16} className="text-primary" />
+                <span className="text-sm">+10 años de experiencia</span>
               </div>
             </div>
           </motion.div>
