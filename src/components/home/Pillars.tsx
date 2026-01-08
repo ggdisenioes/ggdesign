@@ -1,47 +1,50 @@
 import { motion } from "framer-motion";
 import { Cpu, Zap, Shield, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-
-const pillars = [
-  {
-    icon: Cpu,
-    title: "Inteligencia Artificial",
-    description: "Integración de IA en sitios web y plataformas. Chatbots inteligentes, automatización de respuestas y procesos orientados a conversión y eficiencia.",
-    features: [
-      "Chatbots para atención al cliente",
-      "Automatización de respuestas",
-      "IA aplicada a conversión",
-    ],
-    href: "/servicios#ia",
-    gradient: "from-cyan-500 to-blue-500",
-  },
-  {
-    icon: Zap,
-    title: "Automatizaciones",
-    description: "Automatización de procesos digitales e integraciones entre plataformas. Reduce tareas manuales, errores y costos operativos.",
-    features: [
-      "Flujos automáticos de captación",
-      "Integraciones entre sistemas",
-      "Ahorro de tiempo y costos",
-    ],
-    href: "/servicios#automatizacion",
-    gradient: "from-blue-500 to-indigo-500",
-  },
-  {
-    icon: Shield,
-    title: "Ciberseguridad",
-    description: "Sitios web seguros desde el diseño. Protección de datos, prevención de vulnerabilidades y buenas prácticas de seguridad web.",
-    features: [
-      "Seguridad desde el diseño",
-      "Protección de datos",
-      "Prevención de vulnerabilidades",
-    ],
-    href: "/servicios#seguridad",
-    gradient: "from-indigo-500 to-purple-500",
-  },
-];
+import { useLanguage } from "@/i18n/LanguageContext";
 
 export function Pillars() {
+  const { t } = useLanguage();
+
+  const pillars = [
+    {
+      icon: Cpu,
+      title: t.pillars.ai.title,
+      description: t.pillars.ai.description,
+      features: [
+        t.pillars.ai.feature1,
+        t.pillars.ai.feature2,
+        t.pillars.ai.feature3,
+      ],
+      href: "/servicios#ia",
+      gradient: "from-cyan-500 to-blue-500",
+    },
+    {
+      icon: Zap,
+      title: t.pillars.automation.title,
+      description: t.pillars.automation.description,
+      features: [
+        t.pillars.automation.feature1,
+        t.pillars.automation.feature2,
+        t.pillars.automation.feature3,
+      ],
+      href: "/servicios#automatizacion",
+      gradient: "from-blue-500 to-indigo-500",
+    },
+    {
+      icon: Shield,
+      title: t.pillars.security.title,
+      description: t.pillars.security.description,
+      features: [
+        t.pillars.security.feature1,
+        t.pillars.security.feature2,
+        t.pillars.security.feature3,
+      ],
+      href: "/servicios#seguridad",
+      gradient: "from-indigo-500 to-purple-500",
+    },
+  ];
+
   return (
     <section className="py-24 relative">
       <div className="absolute inset-0 bg-gradient-to-b from-background via-card/50 to-background" />
@@ -55,7 +58,7 @@ export function Pillars() {
             viewport={{ once: true }}
             className="inline-block text-primary text-sm font-medium mb-4"
           >
-            Nuestros pilares
+            {t.pillars.sectionLabel}
           </motion.span>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -64,7 +67,7 @@ export function Pillars() {
             transition={{ delay: 0.1 }}
             className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold mb-6"
           >
-            Tecnología que transforma
+            {t.pillars.title}
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -73,8 +76,7 @@ export function Pillars() {
             transition={{ delay: 0.2 }}
             className="text-muted-foreground text-lg max-w-2xl mx-auto"
           >
-            Tres pilares fundamentales que garantizan soluciones digitales 
-            eficientes, seguras y preparadas para el futuro.
+            {t.pillars.subtitle}
           </motion.p>
         </div>
 
@@ -120,7 +122,7 @@ export function Pillars() {
                   to={pillar.href}
                   className="inline-flex items-center gap-2 text-primary text-sm font-medium group-hover:gap-3 transition-all"
                 >
-                  Saber más
+                  {t.pillars.learnMore}
                   <ArrowRight size={16} />
                 </Link>
               </div>

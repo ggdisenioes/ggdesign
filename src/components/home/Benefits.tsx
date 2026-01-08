@@ -1,30 +1,33 @@
 import { motion } from "framer-motion";
 import { TrendingUp, ShieldCheck, Clock, BarChart } from "lucide-react";
-
-const benefits = [
-  {
-    icon: TrendingUp,
-    title: "Más eficiencia",
-    description: "Procesos optimizados que reducen tiempo y recursos en cada operación de tu negocio.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Más seguridad",
-    description: "Protección integral de datos y sistemas desde el primer día de desarrollo.",
-  },
-  {
-    icon: Clock,
-    title: "Menos tareas manuales",
-    description: "Automatizaciones que liberan a tu equipo para enfocarse en lo importante.",
-  },
-  {
-    icon: BarChart,
-    title: "Mejor conversión",
-    description: "Soluciones diseñadas para maximizar resultados y retorno de inversión.",
-  },
-];
+import { useLanguage } from "@/i18n/LanguageContext";
 
 export function Benefits() {
+  const { t } = useLanguage();
+
+  const benefits = [
+    {
+      icon: TrendingUp,
+      title: t.benefits.benefit1Title,
+      description: t.benefits.benefit1Desc,
+    },
+    {
+      icon: ShieldCheck,
+      title: t.benefits.benefit2Title,
+      description: t.benefits.benefit2Desc,
+    },
+    {
+      icon: Clock,
+      title: t.benefits.benefit3Title,
+      description: t.benefits.benefit3Desc,
+    },
+    {
+      icon: BarChart,
+      title: t.benefits.benefit4Title,
+      description: t.benefits.benefit4Desc,
+    },
+  ];
+
   return (
     <section className="py-24 relative overflow-hidden">
       {/* Background */}
@@ -42,7 +45,7 @@ export function Benefits() {
               viewport={{ once: true }}
               className="inline-block text-primary text-sm font-medium mb-4"
             >
-              Beneficios concretos
+              {t.benefits.sectionLabel}
             </motion.span>
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
@@ -51,8 +54,8 @@ export function Benefits() {
               transition={{ delay: 0.1 }}
               className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold mb-6"
             >
-              Resultados que{" "}
-              <span className="text-gradient">importan</span>
+              {t.benefits.title}{" "}
+              <span className="text-gradient">{t.benefits.titleHighlight}</span>
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -61,9 +64,7 @@ export function Benefits() {
               transition={{ delay: 0.2 }}
               className="text-muted-foreground text-lg mb-8"
             >
-              Cada solución que desarrollamos está orientada a generar impacto 
-              real en tu negocio. No hacemos tecnología por hacer, 
-              hacemos tecnología que funciona.
+              {t.benefits.subtitle}
             </motion.p>
 
             {/* Stats */}
@@ -75,12 +76,12 @@ export function Benefits() {
               className="grid grid-cols-2 gap-8"
             >
               <div>
-                <div className="font-display text-4xl font-bold text-gradient mb-2">+10</div>
-                <div className="text-muted-foreground text-sm">Años de experiencia</div>
+                <div className="font-display text-4xl font-bold text-gradient mb-2">{t.benefits.stat1Value}</div>
+                <div className="text-muted-foreground text-sm">{t.benefits.stat1Label}</div>
               </div>
               <div>
-                <div className="font-display text-4xl font-bold text-gradient mb-2">100%</div>
-                <div className="text-muted-foreground text-sm">Proyectos entregados</div>
+                <div className="font-display text-4xl font-bold text-gradient mb-2">{t.benefits.stat2Value}</div>
+                <div className="text-muted-foreground text-sm">{t.benefits.stat2Label}</div>
               </div>
             </motion.div>
           </div>

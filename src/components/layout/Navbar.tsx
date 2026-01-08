@@ -3,18 +3,21 @@ import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
-const navLinks = [
-  { href: "/", label: "Inicio" },
-  { href: "/servicios", label: "Servicios" },
-  { href: "/proyectos", label: "Proyectos" },
-  { href: "/nosotros", label: "Nosotros" },
-  { href: "/contacto", label: "Contacto" },
-];
+import { LanguageSelector } from "@/components/LanguageSelector";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+  const { t } = useLanguage();
+
+  const navLinks = [
+    { href: "/", label: t.nav.home },
+    { href: "/servicios", label: t.nav.services },
+    { href: "/proyectos", label: t.nav.projects },
+    { href: "/nosotros", label: t.nav.about },
+    { href: "/contacto", label: t.nav.contact },
+  ];
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 glass">
@@ -47,21 +50,25 @@ export function Navbar() {
             ))}
           </div>
 
-          {/* CTA Button */}
-          <div className="hidden md:block">
+          {/* Right side: Language + CTA */}
+          <div className="hidden md:flex items-center gap-4">
+            <LanguageSelector />
             <Button variant="hero" size="default" asChild>
-              <Link to="/contacto">Solicitar presupuesto</Link>
+              <Link to="/contacto">{t.nav.requestQuote}</Link>
             </Button>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 text-foreground hover:text-primary transition-colors"
-            aria-label="Toggle menu"
-          >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          {/* Mobile: Language + Menu Button */}
+          <div className="md:hidden flex items-center gap-2">
+            <LanguageSelector />
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="p-2 text-foreground hover:text-primary transition-colors"
+              aria-label="Toggle menu"
+            >
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
       </div>
 
@@ -91,7 +98,7 @@ export function Navbar() {
               ))}
               <Button variant="hero" size="lg" className="w-full mt-4" asChild>
                 <Link to="/contacto" onClick={() => setIsOpen(false)}>
-                  Solicitar presupuesto
+                  {t.nav.requestQuote}
                 </Link>
               </Button>
             </div>

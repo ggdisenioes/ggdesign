@@ -2,8 +2,17 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Shield, Cpu, Zap } from "lucide-react";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 export function Hero() {
+  const { t } = useLanguage();
+
+  const pillars = [
+    { icon: Cpu, label: t.hero.pillar1 },
+    { icon: Zap, label: t.hero.pillar2 },
+    { icon: Shield, label: t.hero.pillar3 },
+  ];
+
   return (
     <section className="relative min-h-[90vh] flex items-center overflow-hidden">
       {/* Background Effects */}
@@ -26,7 +35,7 @@ export function Hero() {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-8"
           >
             <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-            <span className="text-sm text-muted-foreground">Agencia boutique tecnológica en Madrid</span>
+            <span className="text-sm text-muted-foreground">{t.hero.badge}</span>
           </motion.div>
 
           {/* Headline */}
@@ -36,11 +45,11 @@ export function Hero() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight mb-6"
           >
-            Soluciones web{" "}
-            <span className="text-gradient">inteligentes</span>,{" "}
+            {t.hero.headline1}{" "}
+            <span className="text-gradient">{t.hero.headline2}</span>,{" "}
             <br className="hidden sm:block" />
-            automatizadas y{" "}
-            <span className="text-gradient">seguras</span>
+            {t.hero.headline3}{" "}
+            <span className="text-gradient">{t.hero.headline4}</span>
           </motion.h1>
 
           {/* Subtitle */}
@@ -50,8 +59,7 @@ export function Hero() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-10"
           >
-            Diseñamos y desarrollamos soluciones digitales que impulsan el crecimiento 
-            de tu negocio en España y Europa.
+            {t.hero.subtitle}
           </motion.p>
 
           {/* CTAs */}
@@ -63,12 +71,12 @@ export function Hero() {
           >
             <Button variant="hero" size="xl" asChild>
               <Link to="/contacto" className="gap-2">
-                Solicitar presupuesto
+                {t.hero.cta1}
                 <ArrowRight size={20} />
               </Link>
             </Button>
             <Button variant="heroOutline" size="xl" asChild>
-              <Link to="/proyectos">Ver proyectos</Link>
+              <Link to="/proyectos">{t.hero.cta2}</Link>
             </Button>
           </motion.div>
 
@@ -79,11 +87,7 @@ export function Hero() {
             transition={{ duration: 0.5, delay: 0.4 }}
             className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto"
           >
-            {[
-              { icon: Cpu, label: "Inteligencia Artificial" },
-              { icon: Zap, label: "Automatización" },
-              { icon: Shield, label: "Ciberseguridad" },
-            ].map((item, index) => (
+            {pillars.map((item) => (
               <div
                 key={item.label}
                 className="flex items-center justify-center gap-3 px-6 py-4 rounded-xl glass card-hover"
