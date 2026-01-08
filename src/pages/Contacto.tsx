@@ -7,38 +7,15 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useToast } from "@/hooks/use-toast";
+import { useLanguage } from "@/i18n/LanguageContext";
 import { Mail, MapPin, MessageCircle, Send, Clock } from "lucide-react";
 import { Link } from "react-router-dom";
 
-const contactInfo = [
-  {
-    icon: Mail,
-    label: "Email",
-    value: "hola@ggdiseno.com",
-    href: "mailto:hola@ggdiseno.com",
-  },
-  {
-    icon: MessageCircle,
-    label: "WhatsApp",
-    value: "+34 600 000 000",
-    href: "https://wa.me/34600000000",
-  },
-  {
-    icon: MapPin,
-    label: "Ubicación",
-    value: "Madrid, España",
-    href: null,
-  },
-  {
-    icon: Clock,
-    label: "Respuesta",
-    value: "En menos de 24h",
-    href: null,
-  },
-];
-
 export default function Contacto() {
   const { toast } = useToast();
+  const { t } = useLanguage();
+  const c = t.contactPage;
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [acceptPrivacy, setAcceptPrivacy] = useState(false);
   const [acceptCommercial, setAcceptCommercial] = useState(false);
@@ -49,13 +26,47 @@ export default function Contacto() {
     message: "",
   });
 
+  const contactInfo = [
+    {
+      icon: Mail,
+      label: c.emailLabel,
+      value: "hola@ggdiseno.com",
+      href: "mailto:hola@ggdiseno.com",
+    },
+    {
+      icon: MessageCircle,
+      label: c.whatsappLabel,
+      value: "+34 600 000 000",
+      href: "https://wa.me/34600000000",
+    },
+    {
+      icon: MapPin,
+      label: c.locationLabel,
+      value: "Madrid, España",
+      href: null,
+    },
+    {
+      icon: Clock,
+      label: c.responseLabel,
+      value: c.responseValue,
+      href: null,
+    },
+  ];
+
+  const faqs = [
+    { q: c.faqs.q1, a: c.faqs.a1 },
+    { q: c.faqs.q2, a: c.faqs.a2 },
+    { q: c.faqs.q3, a: c.faqs.a3 },
+    { q: c.faqs.q4, a: c.faqs.a4 },
+  ];
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     if (!acceptPrivacy) {
       toast({
-        title: "Consentimiento requerido",
-        description: "Debes aceptar la política de privacidad para enviar el formulario.",
+        title: c.consentRequired,
+        description: c.consentRequiredMessage,
         variant: "destructive",
       });
       return;
@@ -67,8 +78,8 @@ export default function Contacto() {
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
     toast({
-      title: "¡Mensaje enviado!",
-      description: "Te responderemos en menos de 24 horas.",
+      title: c.successTitle,
+      description: c.successMessage,
     });
 
     setFormData({ name: "", email: "", company: "", message: "" });
@@ -98,7 +109,7 @@ export default function Contacto() {
               animate={{ opacity: 1, y: 0 }}
               className="inline-block text-primary text-sm font-medium mb-4"
             >
-              Contacto
+              {c.sectionLabel}
             </motion.span>
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
@@ -106,8 +117,8 @@ export default function Contacto() {
               transition={{ delay: 0.1 }}
               className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold mb-6"
             >
-              Hablemos de tu{" "}
-              <span className="text-gradient">proyecto</span>
+              {c.title}{" "}
+              <span className="text-gradient">{c.titleHighlight}</span>
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -115,8 +126,7 @@ export default function Contacto() {
               transition={{ delay: 0.2 }}
               className="text-muted-foreground text-lg"
             >
-              Contanos qué necesitas y veamos cómo la tecnología 
-              puede ayudarte a crecer. Sin compromiso.
+              {c.subtitle}
             </motion.p>
           </div>
         </div>
@@ -135,20 +145,20 @@ export default function Contacto() {
             >
               <div className="p-8 sm:p-10 rounded-2xl glass">
                 <h2 className="font-display text-2xl font-bold mb-2">
-                  Solicitar presupuesto
+                  {c.formTitle}
                 </h2>
                 <p className="text-muted-foreground mb-8">
-                  Completa el formulario y te responderemos en menos de 24 horas.
+                  {c.formSubtitle}
                 </p>
 
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid sm:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                      <Label htmlFor="name">Nombre *</Label>
+                      <Label htmlFor="name">{c.name} *</Label>
                       <Input
                         id="name"
                         name="name"
-                        placeholder="Tu nombre"
+                        placeholder={c.namePlaceholder}
                         value={formData.name}
                         onChange={handleChange}
                         required
@@ -156,12 +166,12 @@ export default function Contacto() {
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="email">Email *</Label>
+                      <Label htmlFor="email">{c.email} *</Label>
                       <Input
                         id="email"
                         name="email"
                         type="email"
-                        placeholder="tu@email.com"
+                        placeholder={c.emailPlaceholder}
                         value={formData.email}
                         onChange={handleChange}
                         required
@@ -171,11 +181,11 @@ export default function Contacto() {
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="company">Empresa</Label>
+                    <Label htmlFor="company">{c.company}</Label>
                     <Input
                       id="company"
                       name="company"
-                      placeholder="Nombre de tu empresa (opcional)"
+                      placeholder={c.companyPlaceholder}
                       value={formData.company}
                       onChange={handleChange}
                       className="bg-secondary/50 border-border focus:border-primary"
@@ -183,11 +193,11 @@ export default function Contacto() {
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="message">Mensaje *</Label>
+                    <Label htmlFor="message">{c.message} *</Label>
                     <Textarea
                       id="message"
                       name="message"
-                      placeholder="Contanos sobre tu proyecto, qué necesitas y cualquier detalle relevante..."
+                      placeholder={c.messagePlaceholder}
                       value={formData.message}
                       onChange={handleChange}
                       required
@@ -210,12 +220,11 @@ export default function Contacto() {
                           htmlFor="privacy"
                           className="text-sm text-muted-foreground cursor-pointer leading-relaxed"
                         >
-                          He leído y acepto la{" "}
+                          {c.privacyConsent}{" "}
                           <Link to="/privacidad" className="text-primary hover:underline">
-                            Política de Privacidad
+                            {c.privacyPolicy}
                           </Link>{" "}
-                          y consiento el tratamiento de mis datos personales para gestionar 
-                          mi consulta. <span className="text-primary">*</span>
+                          {c.privacyConsentEnd} <span className="text-primary">*</span>
                         </label>
                       </div>
                     </div>
@@ -232,18 +241,16 @@ export default function Contacto() {
                           htmlFor="commercial"
                           className="text-sm text-muted-foreground cursor-pointer leading-relaxed"
                         >
-                          Acepto recibir comunicaciones comerciales y novedades de GG Diseño 
-                          (puedes darte de baja en cualquier momento).
+                          {c.commercialConsent}
                         </label>
                       </div>
                     </div>
 
                     <p className="text-xs text-muted-foreground">
-                      <span className="text-primary">*</span> Campos obligatorios. 
-                      Responsable: GG Diseño. Finalidad: responder a tu consulta. 
-                      Derechos: acceso, rectificación, supresión y otros según nuestra{" "}
+                      <span className="text-primary">*</span> {c.required}{" "}
+                      {c.responsible}{" "}
                       <Link to="/privacidad" className="text-primary hover:underline">
-                        Política de Privacidad
+                        {c.privacyPolicy}
                       </Link>.
                     </p>
                   </div>
@@ -256,10 +263,10 @@ export default function Contacto() {
                     disabled={isSubmitting}
                   >
                     {isSubmitting ? (
-                      "Enviando..."
+                      c.submitting
                     ) : (
                       <>
-                        Enviar mensaje
+                        {c.submit}
                         <Send size={16} className="ml-2" />
                       </>
                     )}
@@ -277,7 +284,7 @@ export default function Contacto() {
               className="lg:col-span-2"
             >
               <h2 className="font-display text-2xl font-bold mb-8">
-                Otras formas de contacto
+                {c.otherWays}
               </h2>
 
               <div className="space-y-6">
@@ -313,10 +320,10 @@ export default function Contacto() {
               {/* WhatsApp CTA */}
               <div className="mt-8 p-6 rounded-xl bg-gradient-to-br from-primary/10 to-accent/10 border border-primary/20">
                 <h3 className="font-display font-semibold text-lg mb-3">
-                  ¿Prefieres WhatsApp?
+                  {c.preferWhatsapp}
                 </h3>
                 <p className="text-muted-foreground text-sm mb-4">
-                  Si es más cómodo para ti, podemos chatear directamente por WhatsApp.
+                  {c.preferWhatsappDesc}
                 </p>
                 <Button variant="outline" asChild className="w-full">
                   <a
@@ -326,7 +333,7 @@ export default function Contacto() {
                     className="gap-2"
                   >
                     <MessageCircle size={20} />
-                    Abrir WhatsApp
+                    {c.openWhatsapp}
                   </a>
                 </Button>
               </div>
@@ -343,28 +350,11 @@ export default function Contacto() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl mx-auto">
             <h2 className="font-display text-2xl sm:text-3xl font-bold text-center mb-12">
-              Preguntas frecuentes
+              {c.faq}
             </h2>
 
             <div className="space-y-6">
-              {[
-                {
-                  q: "¿Cuánto cuesta un proyecto?",
-                  a: "Cada proyecto es único, por eso preferimos conocer tus necesidades antes de dar un presupuesto. Trabajamos con diferentes rangos según la complejidad y alcance del proyecto.",
-                },
-                {
-                  q: "¿Cuánto tiempo tarda un proyecto?",
-                  a: "Depende del tipo de proyecto. Un sitio web puede estar listo en 2-4 semanas, mientras que una plataforma más compleja puede tomar 2-3 meses. Siempre acordamos plazos claros antes de empezar.",
-                },
-                {
-                  q: "¿Trabajan con empresas fuera de España?",
-                  a: "Sí, trabajamos con clientes en toda Europa. La comunicación se puede hacer en español o inglés, y usamos herramientas que facilitan la colaboración remota.",
-                },
-                {
-                  q: "¿Qué pasa después de entregar el proyecto?",
-                  a: "Ofrecemos mantenimiento y soporte continuo para que tu proyecto siga funcionando de forma óptima. También podemos implementar mejoras y nuevas funcionalidades según vayas necesitando.",
-                },
-              ].map((faq, index) => (
+              {faqs.map((faq, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
