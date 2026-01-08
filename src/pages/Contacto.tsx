@@ -5,8 +5,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import { Checkbox } from "@/components/ui/checkbox";
 import { useToast } from "@/hooks/use-toast";
 import { Mail, MapPin, MessageCircle, Send, Clock } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const contactInfo = [
   {
@@ -38,6 +40,8 @@ const contactInfo = [
 export default function Contacto() {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [acceptPrivacy, setAcceptPrivacy] = useState(false);
+  const [acceptCommercial, setAcceptCommercial] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -47,6 +51,16 @@ export default function Contacto() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!acceptPrivacy) {
+      toast({
+        title: "Consentimiento requerido",
+        description: "Debes aceptar la política de privacidad para enviar el formulario.",
+        variant: "destructive",
+      });
+      return;
+    }
+    
     setIsSubmitting(true);
 
     // Simulate form submission
@@ -58,6 +72,8 @@ export default function Contacto() {
     });
 
     setFormData({ name: "", email: "", company: "", message: "" });
+    setAcceptPrivacy(false);
+    setAcceptCommercial(false);
     setIsSubmitting(false);
   };
 
@@ -178,6 +194,58 @@ export default function Contacto() {
                       rows={6}
                       className="bg-secondary/50 border-border focus:border-primary resize-none"
                     />
+                  </div>
+
+                  {/* Privacy Consent */}
+                  <div className="space-y-4 p-4 rounded-lg bg-secondary/30 border border-border">
+                    <div className="flex items-start space-x-3">
+                      <Checkbox
+                        id="privacy"
+                        checked={acceptPrivacy}
+                        onCheckedChange={(checked) => setAcceptPrivacy(checked === true)}
+                        className="mt-1"
+                      />
+                      <div className="grid gap-1.5 leading-none">
+                        <label
+                          htmlFor="privacy"
+                          className="text-sm text-muted-foreground cursor-pointer leading-relaxed"
+                        >
+                          He leído y acepto la{" "}
+                          <Link to="/privacidad" className="text-primary hover:underline">
+                            Política de Privacidad
+                          </Link>{" "}
+                          y consiento el tratamiento de mis datos personales para gestionar 
+                          mi consulta. <span className="text-primary">*</span>
+                        </label>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start space-x-3">
+                      <Checkbox
+                        id="commercial"
+                        checked={acceptCommercial}
+                        onCheckedChange={(checked) => setAcceptCommercial(checked === true)}
+                        className="mt-1"
+                      />
+                      <div className="grid gap-1.5 leading-none">
+                        <label
+                          htmlFor="commercial"
+                          className="text-sm text-muted-foreground cursor-pointer leading-relaxed"
+                        >
+                          Acepto recibir comunicaciones comerciales y novedades de GG Diseño 
+                          (puedes darte de baja en cualquier momento).
+                        </label>
+                      </div>
+                    </div>
+
+                    <p className="text-xs text-muted-foreground">
+                      <span className="text-primary">*</span> Campos obligatorios. 
+                      Responsable: GG Diseño. Finalidad: responder a tu consulta. 
+                      Derechos: acceso, rectificación, supresión y otros según nuestra{" "}
+                      <Link to="/privacidad" className="text-primary hover:underline">
+                        Política de Privacidad
+                      </Link>.
+                    </p>
                   </div>
 
                   <Button

@@ -102,13 +102,25 @@ export function Footer() {
           <p className="text-sm text-muted-foreground">
             © {new Date().getFullYear()} GG Diseño. Todos los derechos reservados.
           </p>
-          <div className="flex gap-6">
+          <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
             <Link to="/privacidad" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-              Política de Privacidad
+              Privacidad
+            </Link>
+            <Link to="/cookies" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+              Cookies
             </Link>
             <Link to="/legal" className="text-sm text-muted-foreground hover:text-primary transition-colors">
               Aviso Legal
             </Link>
+            <button 
+              onClick={() => {
+                localStorage.removeItem("gg-cookie-consent");
+                window.location.reload();
+              }}
+              className="text-sm text-muted-foreground hover:text-primary transition-colors"
+            >
+              Configurar cookies
+            </button>
           </div>
         </div>
       </div>
