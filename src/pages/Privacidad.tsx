@@ -31,7 +31,7 @@ export default function Privacidad() {
                   1. Responsable del Tratamiento
                 </h2>
                 <p>
-                  <strong className="text-foreground">Identidad:</strong> GG Diseño (Gustavo Giannini)<br />
+                  <strong className="text-foreground">Identidad:</strong> GG Diseño<br />
                   <strong className="text-foreground">Dirección:</strong> Madrid, España<br />
                   <strong className="text-foreground">Email:</strong> hola@ggdiseno.com<br />
                 </p>

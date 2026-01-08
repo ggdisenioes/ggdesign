@@ -117,18 +117,18 @@ export default function Nosotros() {
 
             {/* Content */}
             <div>
-              <span className="text-primary text-sm font-medium">Fundador</span>
+              <span className="text-primary text-sm font-medium">Sobre nosotros</span>
               <h2 className="font-display text-3xl sm:text-4xl font-bold mt-2 mb-6">
-                Gustavo Giannini
+                GG Diseño
               </h2>
               <div className="space-y-4 text-muted-foreground">
                 <p>
                   Con más de una década de experiencia en desarrollo web y tecnología digital, 
-                  fundé GG Diseño con una visión clara: crear soluciones tecnológicas que 
+                  GG Diseño nació con una visión clara: crear soluciones tecnológicas que 
                   realmente funcionen para los negocios.
                 </p>
                 <p>
-                  A lo largo de mi carrera he trabajado con empresas de todos los tamaños, 
+                  A lo largo de nuestra trayectoria hemos trabajado con empresas de todos los tamaños, 
                   desde startups hasta corporaciones, aprendiendo que lo más importante 
                   no es la tecnología en sí, sino cómo esta puede resolver problemas 
                   reales y generar valor.
