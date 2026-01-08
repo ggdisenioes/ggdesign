@@ -2,32 +2,35 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, ExternalLink } from "lucide-react";
-
-const projects = [
-  {
-    title: "E-commerce con IA",
-    category: "Desarrollo Web + IA",
-    description: "Plataforma de comercio electrónico con chatbot inteligente y recomendaciones personalizadas.",
-    image: "/placeholder.svg",
-    tags: ["React", "Node.js", "OpenAI"],
-  },
-  {
-    title: "Sistema de automatización",
-    category: "Automatizaciones",
-    description: "Flujo automatizado de captación de leads con integración a CRM y email marketing.",
-    image: "/placeholder.svg",
-    tags: ["Zapier", "HubSpot", "Webhooks"],
-  },
-  {
-    title: "Portal empresarial seguro",
-    category: "Ciberseguridad",
-    description: "Portal interno con autenticación multifactor y gestión segura de documentos.",
-    image: "/placeholder.svg",
-    tags: ["Next.js", "Auth0", "AWS"],
-  },
-];
+import { useLanguage } from "@/i18n/LanguageContext";
 
 export function Projects() {
+  const { t } = useLanguage();
+
+  const projects = [
+    {
+      title: t.projects.project1.title,
+      category: t.projects.project1.category,
+      description: t.projects.project1.description,
+      image: "/placeholder.svg",
+      tags: ["React", "Node.js", "OpenAI"],
+    },
+    {
+      title: t.projects.project2.title,
+      category: t.projects.project2.category,
+      description: t.projects.project2.description,
+      image: "/placeholder.svg",
+      tags: ["Zapier", "HubSpot", "Webhooks"],
+    },
+    {
+      title: t.projects.project3.title,
+      category: t.projects.project3.category,
+      description: t.projects.project3.description,
+      image: "/placeholder.svg",
+      tags: ["Next.js", "Auth0", "AWS"],
+    },
+  ];
+
   return (
     <section className="py-24 relative">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -40,7 +43,7 @@ export function Projects() {
               viewport={{ once: true }}
               className="inline-block text-primary text-sm font-medium mb-4"
             >
-              Proyectos destacados
+              {t.projects.sectionLabel}
             </motion.span>
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
@@ -49,7 +52,7 @@ export function Projects() {
               transition={{ delay: 0.1 }}
               className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold"
             >
-              Trabajo que habla
+              {t.projects.title}
             </motion.h2>
           </div>
           <motion.div
@@ -60,7 +63,7 @@ export function Projects() {
           >
             <Button variant="outline" asChild>
               <Link to="/proyectos" className="gap-2">
-                Ver todos
+                {t.projects.viewAll}
                 <ArrowRight size={16} />
               </Link>
             </Button>

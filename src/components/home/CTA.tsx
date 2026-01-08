@@ -2,8 +2,11 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, MessageCircle } from "lucide-react";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 export function CTA() {
+  const { t } = useLanguage();
+
   return (
     <section className="py-24 relative overflow-hidden">
       {/* Background */}
@@ -18,19 +21,18 @@ export function CTA() {
           className="max-w-3xl mx-auto text-center"
         >
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
-            ¿Listo para{" "}
-            <span className="text-gradient">impulsar</span>{" "}
-            tu negocio?
+            {t.cta.title1}{" "}
+            <span className="text-gradient">{t.cta.titleHighlight}</span>{" "}
+            {t.cta.title2}
           </h2>
           <p className="text-muted-foreground text-lg mb-10 max-w-xl mx-auto">
-            Contanos tu proyecto y veamos cómo la tecnología puede ayudarte a crecer. 
-            Sin compromiso, solo una conversación.
+            {t.cta.subtitle}
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button variant="hero" size="xl" asChild>
               <Link to="/contacto" className="gap-2">
-                Solicitar presupuesto
+                {t.cta.button1}
                 <ArrowRight size={20} />
               </Link>
             </Button>
@@ -42,7 +44,7 @@ export function CTA() {
                 className="gap-2"
               >
                 <MessageCircle size={20} />
-                WhatsApp
+                {t.cta.button2}
               </a>
             </Button>
           </div>

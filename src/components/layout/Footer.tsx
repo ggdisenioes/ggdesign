@@ -1,21 +1,24 @@
 import { Link } from "react-router-dom";
-import { Mail, MapPin, Phone } from "lucide-react";
-
-const footerLinks = {
-  servicios: [
-    { label: "Desarrollo Web", href: "/servicios#web" },
-    { label: "Inteligencia Artificial", href: "/servicios#ia" },
-    { label: "Automatizaciones", href: "/servicios#automatizacion" },
-    { label: "Ciberseguridad", href: "/servicios#seguridad" },
-  ],
-  empresa: [
-    { label: "Nosotros", href: "/nosotros" },
-    { label: "Proyectos", href: "/proyectos" },
-    { label: "Contacto", href: "/contacto" },
-  ],
-};
+import { Mail, MapPin } from "lucide-react";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 export function Footer() {
+  const { t } = useLanguage();
+
+  const footerLinks = {
+    servicios: [
+      { label: t.footer.webDev, href: "/servicios#web" },
+      { label: t.footer.ai, href: "/servicios#ia" },
+      { label: t.footer.automation, href: "/servicios#automatizacion" },
+      { label: t.footer.security, href: "/servicios#seguridad" },
+    ],
+    empresa: [
+      { label: t.footer.aboutUs, href: "/nosotros" },
+      { label: t.footer.projects, href: "/proyectos" },
+      { label: t.footer.contact, href: "/contacto" },
+    ],
+  };
+
   return (
     <footer className="border-t border-border bg-card">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -31,7 +34,7 @@ export function Footer() {
               </span>
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed mb-6">
-              Agencia boutique tecnológica. Soluciones web inteligentes, automatizadas y seguras para negocios en España y Europa.
+              {t.footer.description}
             </p>
             <div className="space-y-3">
               <div className="flex items-center gap-3 text-sm text-muted-foreground">
@@ -49,7 +52,7 @@ export function Footer() {
 
           {/* Services */}
           <div>
-            <h4 className="font-display font-semibold text-foreground mb-6">Servicios</h4>
+            <h4 className="font-display font-semibold text-foreground mb-6">{t.footer.services}</h4>
             <ul className="space-y-3">
               {footerLinks.servicios.map((link) => (
                 <li key={link.href}>
@@ -66,7 +69,7 @@ export function Footer() {
 
           {/* Company */}
           <div>
-            <h4 className="font-display font-semibold text-foreground mb-6">Empresa</h4>
+            <h4 className="font-display font-semibold text-foreground mb-6">{t.footer.company}</h4>
             <ul className="space-y-3">
               {footerLinks.empresa.map((link) => (
                 <li key={link.href}>
@@ -83,15 +86,15 @@ export function Footer() {
 
           {/* Newsletter / CTA */}
           <div>
-            <h4 className="font-display font-semibold text-foreground mb-6">¿Hablamos?</h4>
+            <h4 className="font-display font-semibold text-foreground mb-6">{t.footer.talkTitle}</h4>
             <p className="text-sm text-muted-foreground mb-4">
-              Contanos tu proyecto y veamos cómo la tecnología puede ayudarte a crecer.
+              {t.footer.talkDescription}
             </p>
             <Link
               to="/contacto"
               className="inline-flex items-center gap-2 text-primary text-sm font-medium hover:underline"
             >
-              Solicitar presupuesto
+              {t.footer.requestQuote}
               <span>→</span>
             </Link>
           </div>
@@ -100,17 +103,17 @@ export function Footer() {
         {/* Bottom */}
         <div className="border-t border-border mt-12 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} GG Diseño. Todos los derechos reservados.
+            © {new Date().getFullYear()} GG Diseño. {t.footer.copyright}
           </p>
           <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
             <Link to="/privacidad" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-              Privacidad
+              {t.footer.privacy}
             </Link>
             <Link to="/cookies" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-              Cookies
+              {t.footer.cookies}
             </Link>
             <Link to="/legal" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-              Aviso Legal
+              {t.footer.legal}
             </Link>
             <button 
               onClick={() => {
@@ -119,7 +122,7 @@ export function Footer() {
               }}
               className="text-sm text-muted-foreground hover:text-primary transition-colors"
             >
-              Configurar cookies
+              {t.footer.configureCookies}
             </button>
           </div>
         </div>
