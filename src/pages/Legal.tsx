@@ -35,7 +35,7 @@ export default function Legal() {
                   de la Sociedad de la Información y Comercio Electrónico, se informa:
                 </p>
                 <ul className="list-none mt-4 space-y-2">
-                  <li><strong className="text-foreground">Denominación Social:</strong> GG Diseño (Gustavo Giannini)</li>
+                  <li><strong className="text-foreground">Denominación Social:</strong> GG Diseño</li>
                   <li><strong className="text-foreground">Nombre Comercial:</strong> GG Diseño</li>
                   <li><strong className="text-foreground">Domicilio:</strong> Madrid, España</li>
                   <li><strong className="text-foreground">Actividad:</strong> Servicios de desarrollo web, inteligencia artificial, automatizaciones y ciberseguridad</li>
