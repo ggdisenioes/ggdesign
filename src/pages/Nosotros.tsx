@@ -2,60 +2,35 @@ import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { useLanguage } from "@/i18n/LanguageContext";
 import { ArrowRight, Award, Users, Target, Lightbulb, MapPin, Clock, Shield } from "lucide-react";
 
-const values = [
-  {
-    icon: Target,
-    title: "Orientación a resultados",
-    description: "No hacemos tecnología por hacer. Cada solución está diseñada para generar impacto real en tu negocio.",
-  },
-  {
-    icon: Users,
-    title: "Trato directo",
-    description: "Sin intermediarios ni grandes estructuras. Hablas directamente con quien diseña y desarrolla tu proyecto.",
-  },
-  {
-    icon: Lightbulb,
-    title: "Innovación práctica",
-    description: "Aplicamos las últimas tecnologías cuando realmente aportan valor, no por moda o tendencia.",
-  },
-  {
-    icon: Shield,
-    title: "Seguridad integrada",
-    description: "La seguridad no es un añadido, es parte fundamental de cada línea de código que escribimos.",
-  },
-];
-
-const timeline = [
-  {
-    year: "2014",
-    title: "Primeros pasos",
-    description: "Inicio en desarrollo web y diseño digital trabajando con clientes locales.",
-  },
-  {
-    year: "2017",
-    title: "Especialización",
-    description: "Enfoque en desarrollo frontend avanzado y experiencias de usuario.",
-  },
-  {
-    year: "2020",
-    title: "Automatización e IA",
-    description: "Incorporación de automatizaciones y primeras integraciones con inteligencia artificial.",
-  },
-  {
-    year: "2023",
-    title: "GG Diseño",
-    description: "Consolidación como agencia boutique tecnológica con foco en IA, automatización y seguridad.",
-  },
-  {
-    year: "2026",
-    title: "Perfeccionamiento continuo",
-    description: "Nos perfeccionamos constantemente en inteligencia artificial y ciberseguridad para estar siempre al día con las últimas tecnologías.",
-  },
-];
+const valueIcons = {
+  results: Target,
+  direct: Users,
+  innovation: Lightbulb,
+  security: Shield,
+};
 
 export default function Nosotros() {
+  const { t } = useLanguage();
+  const a = t.aboutPage;
+
+  const values = [
+    { id: "results" as const, data: a.values.results },
+    { id: "direct" as const, data: a.values.direct },
+    { id: "innovation" as const, data: a.values.innovation },
+    { id: "security" as const, data: a.values.security },
+  ];
+
+  const timeline = [
+    { year: "2014", data: a.timeline.t2014 },
+    { year: "2017", data: a.timeline.t2017 },
+    { year: "2020", data: a.timeline.t2020 },
+    { year: "2023", data: a.timeline.t2023 },
+    { year: "2026", data: a.timeline.t2026 },
+  ];
+
   return (
     <Layout>
       {/* Hero Section */}
@@ -68,7 +43,7 @@ export default function Nosotros() {
               animate={{ opacity: 1, y: 0 }}
               className="inline-block text-primary text-sm font-medium mb-4"
             >
-              Sobre nosotros
+              {a.sectionLabel}
             </motion.span>
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
@@ -76,8 +51,8 @@ export default function Nosotros() {
               transition={{ delay: 0.1 }}
               className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold mb-6"
             >
-              Tecnología con{" "}
-              <span className="text-gradient">propósito</span>
+              {a.title}{" "}
+              <span className="text-gradient">{a.titleHighlight}</span>
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -85,8 +60,7 @@ export default function Nosotros() {
               transition={{ delay: 0.2 }}
               className="text-muted-foreground text-lg"
             >
-              Somos una agencia boutique que combina experiencia técnica 
-              con visión estratégica para crear soluciones que realmente funcionan.
+              {a.subtitle}
             </motion.p>
           </div>
         </div>
@@ -101,41 +75,28 @@ export default function Nosotros() {
             viewport={{ once: true }}
             className="max-w-3xl mx-auto"
           >
-            <span className="text-primary text-sm font-medium">Sobre nosotros</span>
+            <span className="text-primary text-sm font-medium">{a.aboutLabel}</span>
             <h2 className="font-display text-3xl sm:text-4xl font-bold mt-2 mb-6">
-              GG Diseño
+              {a.companyName}
             </h2>
             <div className="space-y-4 text-muted-foreground">
-              <p>
-                Con más de una década de experiencia en desarrollo web y tecnología digital, 
-                GG Diseño nació con una visión clara: crear soluciones tecnológicas que 
-                realmente funcionen para los negocios.
-              </p>
-              <p>
-                A lo largo de nuestra trayectoria hemos trabajado con empresas de todos los tamaños, 
-                desde startups hasta corporaciones, aprendiendo que lo más importante 
-                no es la tecnología en sí, sino cómo esta puede resolver problemas 
-                reales y generar valor.
-              </p>
-              <p>
-                Hoy, GG Diseño combina esa experiencia con las últimas innovaciones 
-                en inteligencia artificial, automatización y seguridad web para 
-                ofrecer soluciones completas y de alto impacto.
-              </p>
+              <p>{a.description1}</p>
+              <p>{a.description2}</p>
+              <p>{a.description3}</p>
             </div>
 
             <div className="flex items-center gap-6 mt-8">
               <div className="flex items-center gap-2 text-muted-foreground">
                 <MapPin size={16} className="text-primary" />
-                <span className="text-sm">Madrid, España</span>
+                <span className="text-sm">{a.location}</span>
               </div>
               <div className="flex items-center gap-2 text-muted-foreground">
                 <Clock size={16} className="text-primary" />
-                <span className="text-sm">Disponibilidad flexible</span>
+                <span className="text-sm">{a.availability}</span>
               </div>
               <div className="flex items-center gap-2 text-muted-foreground">
                 <Award size={16} className="text-primary" />
-                <span className="text-sm">+10 años de experiencia</span>
+                <span className="text-sm">{a.experience}</span>
               </div>
             </div>
           </motion.div>
@@ -156,7 +117,7 @@ export default function Nosotros() {
               viewport={{ once: true }}
               className="font-display text-3xl sm:text-4xl font-bold mb-6"
             >
-              Cómo trabajamos
+              {a.howWeWork}
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -165,31 +126,34 @@ export default function Nosotros() {
               transition={{ delay: 0.1 }}
               className="text-muted-foreground text-lg max-w-2xl mx-auto"
             >
-              Principios que guían cada proyecto y cada decisión.
+              {a.howWeWorkSubtitle}
             </motion.p>
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {values.map((value, index) => (
-              <motion.div
-                key={value.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="p-6 rounded-xl glass card-hover text-center"
-              >
-                <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                  <value.icon size={28} className="text-primary" />
-                </div>
-                <h3 className="font-display font-semibold text-foreground mb-3">
-                  {value.title}
-                </h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  {value.description}
-                </p>
-              </motion.div>
-            ))}
+            {values.map((value, index) => {
+              const Icon = valueIcons[value.id];
+              return (
+                <motion.div
+                  key={value.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="p-6 rounded-xl glass card-hover text-center"
+                >
+                  <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                    <Icon size={28} className="text-primary" />
+                  </div>
+                  <h3 className="font-display font-semibold text-foreground mb-3">
+                    {value.data.title}
+                  </h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed">
+                    {value.data.description}
+                  </p>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -204,7 +168,7 @@ export default function Nosotros() {
               viewport={{ once: true }}
               className="font-display text-3xl sm:text-4xl font-bold mb-6"
             >
-              Nuestra evolución
+              {a.evolution}
             </motion.h2>
           </div>
 
@@ -229,10 +193,10 @@ export default function Nosotros() {
                   
                   <div className="pt-4">
                     <h3 className="font-display font-semibold text-xl text-foreground mb-2">
-                      {item.title}
+                      {item.data.title}
                     </h3>
                     <p className="text-muted-foreground">
-                      {item.description}
+                      {item.data.description}
                     </p>
                   </div>
                 </motion.div>
@@ -248,15 +212,14 @@ export default function Nosotros() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-2xl mx-auto text-center">
             <h2 className="font-display text-3xl sm:text-4xl font-bold mb-6">
-              ¿Trabajamos juntos?
+              {a.ctaTitle}
             </h2>
             <p className="text-muted-foreground text-lg mb-8">
-              Si buscas un socio tecnológico que entienda tu negocio 
-              y te ayude a crecer, hablemos.
+              {a.ctaSubtitle}
             </p>
             <Button variant="hero" size="xl" asChild>
               <Link to="/contacto" className="gap-2">
-                Empezar conversación
+                {a.ctaButton}
                 <ArrowRight size={20} />
               </Link>
             </Button>
