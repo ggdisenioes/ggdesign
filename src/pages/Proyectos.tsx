@@ -4,7 +4,42 @@ import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/i18n/LanguageContext";
-import { ArrowRight, Music, Scissors, Megaphone, Coffee, Bot, GraduationCap, Cog, Heart, BookOpen, Palette, Filter, X } from "lucide-react";
+import { 
+  ArrowRight, Music, Scissors, Megaphone, Coffee, Bot, GraduationCap, Cog, Heart, BookOpen, Palette, Filter, X,
+  // Technology icons
+  Globe, Code2, Music2, Mail, ShoppingCart, Calendar, FileText, BarChart3, Blocks, Video, Search, MessageCircle,
+  Users, BookMarked, Atom, Stethoscope, CreditCard, LayoutDashboard, RefreshCw, Newspaper, Briefcase, Sparkles, PenTool,
+  type LucideIcon
+} from "lucide-react";
+
+// Technology icon mapping
+const technologyIcons: Record<string, LucideIcon> = {
+  "WordPress": Globe,
+  "PHP": Code2,
+  "Spotify API": Music2,
+  "Newsletter": Mail,
+  "WooCommerce": ShoppingCart,
+  "LMS": GraduationCap,
+  "MercadoPago": CreditCard,
+  "Calendly": Calendar,
+  "Forms": FileText,
+  "Analytics": BarChart3,
+  "Elementor": Blocks,
+  "Video": Video,
+  "SEO": Search,
+  "WhatsApp": MessageCircle,
+  "Membresía": Users,
+  "Ebooks": BookMarked,
+  "React": Atom,
+  "Telemedicina": Stethoscope,
+  "Pagos": CreditCard,
+  "Dashboard": LayoutDashboard,
+  "Suscripción": RefreshCw,
+  "Revistas": Newspaper,
+  "Portfolio": Briefcase,
+  "Animaciones": Sparkles,
+  "Diseño": PenTool,
+};
 
 // Project images
 import alejandroLernerImg from "@/assets/projects/alejandro-lerner.png";
@@ -177,19 +212,23 @@ export default function Proyectos() {
                 {p.technologyLabel || "Tecnología"}
               </span>
               <div className="flex flex-wrap gap-2">
-                {allTechnologies.map((tech) => (
-                  <button
-                    key={tech}
-                    onClick={() => setSelectedTech(selectedTech === tech ? null : tech)}
-                    className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
-                      selectedTech === tech
-                        ? "bg-primary text-primary-foreground"
-                        : "bg-muted text-muted-foreground hover:bg-muted/80"
-                    }`}
-                  >
-                    {tech}
-                  </button>
-                ))}
+                {allTechnologies.map((tech) => {
+                  const TechIcon = technologyIcons[tech] || Code2;
+                  return (
+                    <button
+                      key={tech}
+                      onClick={() => setSelectedTech(selectedTech === tech ? null : tech)}
+                      className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
+                        selectedTech === tech
+                          ? "bg-primary text-primary-foreground"
+                          : "bg-muted text-muted-foreground hover:bg-muted/80"
+                      }`}
+                    >
+                      <TechIcon size={14} />
+                      {tech}
+                    </button>
+                  );
+                })}
               </div>
             </div>
 
