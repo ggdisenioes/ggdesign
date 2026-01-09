@@ -9,6 +9,12 @@ interface LanguageContextType {
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
+const fallbackContext: LanguageContextType = {
+  language: "es",
+  setLanguage: () => {},
+  t: translations.es as unknown as TranslationType,
+};
+
 // Map country codes to languages
 const countryToLanguage: Record<string, Language> = {
   // Spanish
@@ -117,7 +123,11 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
 export function useLanguage() {
   const context = useContext(LanguageContext);
   if (!context) {
-    throw new Error("useLanguage must be used within a LanguageProvider");
+    // Avoid blank screens if a component is ever rendered outside the provider.
+    if (import.meta.env.DEV) {
+      console.warn("useLanguage was used outside LanguageProvider. Falling back to default language.");
+    }
+    return fallbackContext;
   }
   return context;
 }
