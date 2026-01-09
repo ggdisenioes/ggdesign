@@ -86,6 +86,22 @@ export default function Contacto() {
 
       if (error) throw error;
 
+      // Send email notification
+      try {
+        await supabase.functions.invoke("notify-lead", {
+          body: {
+            name: formData.name.trim(),
+            email: formData.email.trim(),
+            company: formData.company.trim() || null,
+            message: formData.message.trim(),
+            acceptCommercial,
+          },
+        });
+      } catch (emailError) {
+        console.error("Error sending email notification:", emailError);
+        // Don't fail the form submission if email fails
+      }
+
       toast({
         title: c.successTitle,
         description: c.successMessage,
