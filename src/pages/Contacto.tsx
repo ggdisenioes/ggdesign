@@ -37,8 +37,8 @@ export default function Contacto() {
     {
       icon: MessageCircle,
       label: c.whatsappLabel,
-      value: "+34 600 000 000",
-      href: "https://wa.me/34600000000",
+      value: "+34 652 63 84 07",
+      href: "https://wa.me/34652638407",
     },
     {
       icon: MapPin,
@@ -345,7 +345,7 @@ export default function Contacto() {
                 </p>
                 <Button variant="outline" asChild className="w-full">
                   <a
-                    href="https://wa.me/34600000000"
+                    href="https://wa.me/34652638407"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="gap-2"
