@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
@@ -11,6 +11,9 @@ import { useLanguage } from "@/i18n/LanguageContext";
 import { Mail, MapPin, MessageCircle, Send, Clock } from "lucide-react";
 import { Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
+
+// Minimum time (ms) a human needs to fill the form
+const MIN_SUBMIT_TIME = 3000;
 
 export default function Contacto() {
   const { toast } = useToast();
@@ -26,6 +29,12 @@ export default function Contacto() {
     company: "",
     message: "",
   });
+
+  // Anti-spam: honeypot field (bots fill it, humans don't see it)
+  const [honeypot, setHoneypot] = useState("");
+  
+  // Anti-spam: track when form was loaded
+  const formLoadTime = useRef<number>(Date.now());
 
   const contactInfo = [
     {
@@ -63,6 +72,27 @@ export default function Contacto() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Anti-spam: if honeypot is filled, silently reject (bots fill hidden fields)
+    if (honeypot) {
+      toast({
+        title: c.successTitle,
+        description: c.successMessage,
+      });
+      setFormData({ name: "", email: "", company: "", message: "" });
+      return;
+    }
+
+    // Anti-spam: if submitted too fast, it's likely a bot
+    const timeSpent = Date.now() - formLoadTime.current;
+    if (timeSpent < MIN_SUBMIT_TIME) {
+      toast({
+        title: "Error",
+        description: "Por favor, tómate un momento para completar el formulario.",
+        variant: "destructive",
+      });
+      return;
+    }
     
     if (!acceptPrivacy) {
       toast({
@@ -223,6 +253,20 @@ export default function Contacto() {
                       value={formData.company}
                       onChange={handleChange}
                       className="bg-secondary/50 border-border focus:border-primary"
+                    />
+                  </div>
+
+                  {/* Honeypot field - hidden from humans, bots will fill it */}
+                  <div className="absolute -left-[9999px]" aria-hidden="true">
+                    <Label htmlFor="website">Website</Label>
+                    <Input
+                      id="website"
+                      name="website"
+                      type="text"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      value={honeypot}
+                      onChange={(e) => setHoneypot(e.target.value)}
                     />
                   </div>
 
