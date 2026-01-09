@@ -5,6 +5,7 @@ import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { LanguageSelector } from "@/components/LanguageSelector";
 import { useLanguage } from "@/i18n/LanguageContext";
+import logo from "@/assets/logo.png";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,9 +26,7 @@ export function Navbar() {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-lg bg-gradient-primary flex items-center justify-center font-display font-bold text-primary-foreground text-lg">
-              GG
-            </div>
+            <img src={logo} alt="GG Diseño" className="h-10 w-auto" />
             <span className="font-display font-semibold text-xl text-foreground group-hover:text-primary transition-colors">
               Diseño
             </span>
