@@ -29,7 +29,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Send notification to business owners
     const notificationResponse = await resend.emails.send({
-      from: "GG Diseño <onboarding@resend.dev>",
+      from: "GG Diseño <noreply@ggdisenio.es>",
       to: ["hola@ggdisenio.es", "info@ggdisenio.es"],
       subject: `🎯 Nuevo lead: ${name}`,
       html: `
@@ -71,7 +71,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Send confirmation to the lead
     const confirmationResponse = await resend.emails.send({
-      from: "GG Diseño <onboarding@resend.dev>",
+      from: "GG Diseño <noreply@ggdisenio.es>",
       to: [email],
       subject: "¡Hemos recibido tu mensaje! - GG Diseño",
       html: `
