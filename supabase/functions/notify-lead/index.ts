@@ -27,10 +27,10 @@ const handler = async (req: Request): Promise<Response> => {
 
     console.log("Received lead notification request:", { name, email, company });
 
-    // Send notification to business owner
+    // Send notification to business owners
     const notificationResponse = await resend.emails.send({
       from: "GG Diseño <onboarding@resend.dev>",
-      to: ["hola@ggdiseno.com"],
+      to: ["hola@ggdisenio.es", "info@ggdisenio.es"],
       subject: `🎯 Nuevo lead: ${name}`,
       html: `
         <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
