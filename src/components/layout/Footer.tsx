@@ -26,12 +26,11 @@ export function Footer() {
           {/* Brand */}
           <div className="lg:col-span-1">
             <Link to="/" className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 rounded-lg bg-gradient-primary flex items-center justify-center font-display font-bold text-primary-foreground text-lg">
-                GG
-              </div>
-              <span className="font-display font-semibold text-xl text-foreground">
-                Diseño
-              </span>
+              <img 
+                src="/logo.png" 
+                alt="GG Diseño" 
+                className="h-10 w-auto"
+              />
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed mb-6">
               {t.footer.description}
