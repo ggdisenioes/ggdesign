@@ -1,8 +1,13 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, ExternalLink } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
+
+// Import featured project images
+import alejandroLernerImg from "@/assets/projects/alejandro-lerner.png";
+import veckaImg from "@/assets/projects/vecka.png";
+import growwingGroupImg from "@/assets/projects/growwinggroup.png";
 
 export function Projects() {
   const { t } = useLanguage();
@@ -12,22 +17,22 @@ export function Projects() {
       title: t.projects.project1.title,
       category: t.projects.project1.category,
       description: t.projects.project1.description,
-      image: "/placeholder.svg",
-      tags: ["React", "Node.js", "OpenAI"],
+      image: alejandroLernerImg,
+      tags: ["WordPress", "Spotify API", "Newsletter"],
     },
     {
       title: t.projects.project2.title,
       category: t.projects.project2.category,
       description: t.projects.project2.description,
-      image: "/placeholder.svg",
-      tags: ["Zapier", "HubSpot", "Webhooks"],
+      image: veckaImg,
+      tags: ["WooCommerce", "LMS", "MercadoPago"],
     },
     {
       title: t.projects.project3.title,
       category: t.projects.project3.category,
       description: t.projects.project3.description,
-      image: "/placeholder.svg",
-      tags: ["Next.js", "Auth0", "AWS"],
+      image: growwingGroupImg,
+      tags: ["WordPress", "Video", "Branding"],
     },
   ];
 
@@ -83,13 +88,13 @@ export function Projects() {
             >
               <Link to="/proyectos" className="block">
                 {/* Image */}
-                <div className="relative aspect-[4/3] rounded-xl overflow-hidden mb-6 glass">
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20" />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center group-hover:scale-110 transition-transform">
-                      <ExternalLink size={24} className="text-primary" />
-                    </div>
-                  </div>
+                <div className="relative aspect-[4/3] rounded-xl overflow-hidden mb-6">
+                  <img 
+                    src={project.image} 
+                    alt={project.title}
+                    className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                 </div>
 
                 {/* Content */}
