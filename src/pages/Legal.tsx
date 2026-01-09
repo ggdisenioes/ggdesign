@@ -39,7 +39,7 @@ export default function Legal() {
                   <li><strong className="text-foreground">Nombre Comercial:</strong> GG Diseño</li>
                   <li><strong className="text-foreground">Domicilio:</strong> Madrid, España</li>
                   <li><strong className="text-foreground">Actividad:</strong> Servicios de desarrollo web, inteligencia artificial, automatizaciones y ciberseguridad</li>
-                  <li><strong className="text-foreground">Email de contacto:</strong> hola@ggdiseno.com</li>
+                  <li><strong className="text-foreground">Email de contacto:</strong> hola@ggdisenio.es</li>
                 </ul>
               </div>
 
@@ -48,7 +48,7 @@ export default function Legal() {
                   2. Objeto
                 </h2>
                 <p>
-                  El presente Aviso Legal regula el uso del sitio web ggdiseno.com (en adelante, 
+                  El presente Aviso Legal regula el uso del sitio web ggdisenio.es (en adelante, 
                   "el Sitio Web"), del que es titular GG Diseño.
                 </p>
                 <p className="mt-4">
@@ -167,8 +167,8 @@ export default function Legal() {
                 </p>
                 <p className="mt-2">
                   <strong className="text-foreground">Email:</strong>{" "}
-                  <a href="mailto:hola@ggdiseno.com" className="text-primary hover:underline">
-                    hola@ggdiseno.com
+                  <a href="mailto:hola@ggdisenio.es" className="text-primary hover:underline">
+                    hola@ggdisenio.es
                   </a>
                 </p>
               </div>

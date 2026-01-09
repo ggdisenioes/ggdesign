@@ -116,7 +116,7 @@ const handler = async (req: Request): Promise<Response> => {
           <div style="text-align: center; margin-top: 20px; padding: 20px; background: #f1f5f9; border-radius: 8px;">
             <p style="color: #64748b; font-size: 12px; margin: 0;">
               GG Diseño · Madrid, España<br/>
-              <a href="mailto:hola@ggdiseno.com" style="color: #6366f1;">hola@ggdiseno.com</a>
+              <a href="mailto:hola@ggdisenio.es" style="color: #6366f1;">hola@ggdisenio.es</a>
             </p>
           </div>
         </div>
