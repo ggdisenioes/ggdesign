@@ -3,32 +3,50 @@ import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/i18n/LanguageContext";
-import { ArrowRight, Code, Cpu, Shield, Zap } from "lucide-react";
+import { ArrowRight, Music, Scissors, Megaphone, Coffee, Bot, GraduationCap, Cog, Heart, BookOpen, Palette } from "lucide-react";
 
-const projectIcons = {
-  project1: Zap,
-  project2: Cpu,
-  project3: Shield,
-  project4: Code,
+// Project images
+import alejandroLernerImg from "@/assets/projects/alejandro-lerner.png";
+import veckaImg from "@/assets/projects/vecka.png";
+import growwingGroupImg from "@/assets/projects/growwinggroup.png";
+import coachingCafeImg from "@/assets/projects/coaching-cafe.png";
+import eariImg from "@/assets/projects/eari.png";
+import mtEscuelaImg from "@/assets/projects/mt-escuela.png";
+import roboticaIndustrialImg from "@/assets/projects/robotica-industrial.png";
+import salud24Img from "@/assets/projects/salud24.png";
+import siempreVitalImg from "@/assets/projects/siemprevital.png";
+import theBornIdImg from "@/assets/projects/thebornid.png";
+
+const projectConfig = {
+  alejandroLerner: { icon: Music, image: alejandroLernerImg, technologies: ["WordPress", "PHP", "Spotify API", "Newsletter"], featured: true },
+  vecka: { icon: Scissors, image: veckaImg, technologies: ["WooCommerce", "LMS", "MercadoPago", "WordPress"], featured: true },
+  growwingGroup: { icon: Megaphone, image: growwingGroupImg, technologies: ["WordPress", "Elementor", "Video", "SEO"], featured: true },
+  coachingCafe: { icon: Coffee, image: coachingCafeImg, technologies: ["WordPress", "Calendly", "Forms", "Analytics"] },
+  eari: { icon: Bot, image: eariImg, technologies: ["WooCommerce", "LMS", "WordPress", "Pagos"] },
+  mtEscuela: { icon: GraduationCap, image: mtEscuelaImg, technologies: ["WooCommerce", "Membresía", "LMS", "Ebooks"] },
+  roboticaIndustrial: { icon: Cog, image: roboticaIndustrialImg, technologies: ["WordPress", "SEO", "WhatsApp", "Forms"] },
+  salud24: { icon: Heart, image: salud24Img, technologies: ["React", "Telemedicina", "Pagos", "Dashboard"] },
+  siempreVital: { icon: BookOpen, image: siempreVitalImg, technologies: ["WordPress", "Suscripción", "Revistas", "Pagos"] },
+  theBornId: { icon: Palette, image: theBornIdImg, technologies: ["WordPress", "Portfolio", "Animaciones", "Diseño"] },
 };
 
-const projectTechnologies = {
-  project1: ["React", "Node.js", "PostgreSQL", "Webhooks"],
-  project2: ["Next.js", "OpenAI", "Stripe", "Vercel"],
-  project3: ["Next.js", "Auth0", "AWS S3", "PostgreSQL"],
-  project4: ["React", "Framer Motion", "Tailwind CSS", "Vercel"],
-};
+type ProjectKey = keyof typeof projectConfig;
 
 export default function Proyectos() {
   const { t } = useLanguage();
   const p = t.projectsPage;
 
-  const projects = [
-    { id: "project1" as const, data: p.projects.project1 },
-    { id: "project2" as const, data: p.projects.project2 },
-    { id: "project3" as const, data: p.projects.project3 },
-    { id: "project4" as const, data: p.projects.project4 },
+  const projectKeys: ProjectKey[] = [
+    "alejandroLerner", "vecka", "growwingGroup", "coachingCafe", "eari",
+    "mtEscuela", "roboticaIndustrial", "salud24", "siempreVital", "theBornId"
   ];
+
+  // Featured projects first
+  const sortedProjects = projectKeys.sort((a, b) => {
+    const aFeatured = projectConfig[a].featured ? 1 : 0;
+    const bFeatured = projectConfig[b].featured ? 1 : 0;
+    return bFeatured - aFeatured;
+  });
 
   return (
     <Layout>
@@ -69,35 +87,51 @@ export default function Proyectos() {
       <section className="py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-16">
-            {projects.map((project) => {
-              const Icon = projectIcons[project.id];
-              const technologies = projectTechnologies[project.id];
+            {sortedProjects.map((key) => {
+              const config = projectConfig[key];
+              const data = p.projects[key];
+              const Icon = config.icon;
+              
               return (
                 <motion.article
-                  key={project.id}
+                  key={key}
                   initial={{ opacity: 0, y: 40 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  className="grid lg:grid-cols-5 gap-8 p-8 rounded-2xl glass card-hover"
+                  className={`grid lg:grid-cols-5 gap-8 p-8 rounded-2xl glass card-hover ${config.featured ? 'ring-2 ring-primary/20' : ''}`}
                 >
-                  {/* Left Column - Main Info */}
+                  {/* Left Column - Image & Main Info */}
                   <div className="lg:col-span-3">
+                    {/* Project Image */}
+                    <div className="relative aspect-video rounded-xl overflow-hidden mb-6">
+                      <img 
+                        src={config.image} 
+                        alt={data.title}
+                        className="w-full h-full object-cover object-top"
+                      />
+                      {config.featured && (
+                        <div className="absolute top-4 left-4 px-3 py-1 bg-primary text-primary-foreground text-xs font-medium rounded-full">
+                          ⭐ Destacado
+                        </div>
+                      )}
+                    </div>
+
                     <div className="flex items-center gap-4 mb-6">
                       <div className="w-12 h-12 rounded-xl bg-gradient-primary flex items-center justify-center">
                         <Icon size={24} className="text-primary-foreground" />
                       </div>
                       <div>
                         <span className="text-primary text-sm font-medium">
-                          {project.data.category}
+                          {data.category}
                         </span>
                         <h2 className="font-display text-xl sm:text-2xl font-bold">
-                          {project.data.title}
+                          {data.title}
                         </h2>
                       </div>
                     </div>
 
                     <p className="text-muted-foreground text-lg mb-6">
-                      {project.data.description}
+                      {data.description}
                     </p>
 
                     {/* Challenge & Solution */}
@@ -106,19 +140,19 @@ export default function Proyectos() {
                         <span className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
                           {p.challenge}
                         </span>
-                        <p className="text-foreground text-sm mt-2">{project.data.challenge}</p>
+                        <p className="text-foreground text-sm mt-2">{data.challenge}</p>
                       </div>
                       <div className="p-4 rounded-lg bg-primary/10">
                         <span className="text-xs font-medium text-primary uppercase tracking-wider">
                           {p.solution}
                         </span>
-                        <p className="text-foreground text-sm mt-2">{project.data.solution}</p>
+                        <p className="text-foreground text-sm mt-2">{data.solution}</p>
                       </div>
                     </div>
 
                     {/* Technologies */}
                     <div className="flex flex-wrap gap-2">
-                      {technologies.map((tech) => (
+                      {config.technologies.map((tech) => (
                         <span
                           key={tech}
                           className="px-3 py-1 rounded-full text-xs font-medium bg-secondary text-secondary-foreground"
@@ -136,7 +170,7 @@ export default function Proyectos() {
                         {p.results}
                       </h3>
                       <ul className="space-y-4">
-                        {project.data.results.map((result, i) => (
+                        {data.results.map((result, i) => (
                           <li key={i} className="flex items-start gap-3">
                             <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0 mt-0.5">
                               <span className="text-primary text-xs font-bold">{i + 1}</span>
@@ -150,7 +184,7 @@ export default function Proyectos() {
                         <span className="text-xs text-muted-foreground uppercase tracking-wider">
                           {p.client}
                         </span>
-                        <p className="text-foreground font-medium mt-1">{project.data.client}</p>
+                        <p className="text-foreground font-medium mt-1">{data.client}</p>
                       </div>
                     </div>
                   </div>
