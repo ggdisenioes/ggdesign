@@ -33,7 +33,7 @@ export default function Privacidad() {
                 <p>
                   <strong className="text-foreground">Identidad:</strong> GG Diseño<br />
                   <strong className="text-foreground">Dirección:</strong> Madrid, España<br />
-                  <strong className="text-foreground">Email:</strong> hola@ggdiseno.com<br />
+                  <strong className="text-foreground">Email:</strong> hola@ggdisenio.es<br />
                 </p>
                 <p className="mt-4">
                   En cumplimiento del Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo (RGPD) 
@@ -136,7 +136,7 @@ export default function Privacidad() {
                   <li><strong className="text-foreground">Portabilidad:</strong> recibir sus datos en formato estructurado y de uso común.</li>
                 </ul>
                 <p className="mt-4">
-                  Para ejercer estos derechos, puede contactarnos en: <strong className="text-foreground">hola@ggdiseno.com</strong>
+                  Para ejercer estos derechos, puede contactarnos en: <strong className="text-foreground">hola@ggdisenio.es</strong>
                 </p>
                 <p className="mt-4">
                   También tiene derecho a presentar una reclamación ante la Agencia Española de 

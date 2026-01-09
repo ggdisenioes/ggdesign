@@ -188,8 +188,8 @@ export default function Cookies() {
                 </p>
                 <p className="mt-2">
                   <strong className="text-foreground">Email:</strong>{" "}
-                  <a href="mailto:hola@ggdiseno.com" className="text-primary hover:underline">
-                    hola@ggdiseno.com
+                  <a href="mailto:hola@ggdisenio.es" className="text-primary hover:underline">
+                    hola@ggdisenio.es
                   </a>
                 </p>
               </div>

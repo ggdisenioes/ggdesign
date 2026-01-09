@@ -31,8 +31,8 @@ export default function Contacto() {
     {
       icon: Mail,
       label: c.emailLabel,
-      value: "hola@ggdiseno.com",
-      href: "mailto:hola@ggdiseno.com",
+      value: "hola@ggdisenio.es",
+      href: "mailto:hola@ggdisenio.es",
     },
     {
       icon: MessageCircle,
