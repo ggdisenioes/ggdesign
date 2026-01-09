@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Mail, MapPin } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
+import logo from "@/assets/logo.png";
 
 export function Footer() {
   const { t } = useLanguage();
@@ -27,7 +28,7 @@ export function Footer() {
           <div className="lg:col-span-1">
             <Link to="/" className="flex items-center gap-3 mb-6">
               <img 
-                src="/logo.png" 
+                src={logo} 
                 alt="GG Diseño" 
                 className="h-10 w-auto"
               />
