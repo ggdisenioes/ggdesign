@@ -21,13 +21,13 @@ const projectConfig = {
   alejandroLerner: { icon: Music, image: alejandroLernerImg, technologies: ["WordPress", "PHP", "Spotify API", "Newsletter"], featured: true },
   vecka: { icon: Scissors, image: veckaImg, technologies: ["WooCommerce", "LMS", "MercadoPago", "WordPress"], featured: true },
   growwingGroup: { icon: Megaphone, image: growwingGroupImg, technologies: ["WordPress", "Elementor", "Video", "SEO"], featured: true },
-  coachingCafe: { icon: Coffee, image: coachingCafeImg, technologies: ["WordPress", "Calendly", "Forms", "Analytics"] },
-  eari: { icon: Bot, image: eariImg, technologies: ["WooCommerce", "LMS", "WordPress", "Pagos"] },
-  mtEscuela: { icon: GraduationCap, image: mtEscuelaImg, technologies: ["WooCommerce", "Membresía", "LMS", "Ebooks"] },
-  roboticaIndustrial: { icon: Cog, image: roboticaIndustrialImg, technologies: ["WordPress", "SEO", "WhatsApp", "Forms"] },
-  salud24: { icon: Heart, image: salud24Img, technologies: ["React", "Telemedicina", "Pagos", "Dashboard"] },
-  siempreVital: { icon: BookOpen, image: siempreVitalImg, technologies: ["WordPress", "Suscripción", "Revistas", "Pagos"] },
-  theBornId: { icon: Palette, image: theBornIdImg, technologies: ["WordPress", "Portfolio", "Animaciones", "Diseño"] },
+  coachingCafe: { icon: Coffee, image: coachingCafeImg, technologies: ["WordPress", "Calendly", "Forms", "Analytics"], featured: false },
+  eari: { icon: Bot, image: eariImg, technologies: ["WooCommerce", "LMS", "WordPress", "Pagos"], featured: false },
+  mtEscuela: { icon: GraduationCap, image: mtEscuelaImg, technologies: ["WooCommerce", "Membresía", "LMS", "Ebooks"], featured: false },
+  roboticaIndustrial: { icon: Cog, image: roboticaIndustrialImg, technologies: ["WordPress", "SEO", "WhatsApp", "Forms"], featured: false },
+  salud24: { icon: Heart, image: salud24Img, technologies: ["React", "Telemedicina", "Pagos", "Dashboard"], featured: false },
+  siempreVital: { icon: BookOpen, image: siempreVitalImg, technologies: ["WordPress", "Suscripción", "Revistas", "Pagos"], featured: false },
+  theBornId: { icon: Palette, image: theBornIdImg, technologies: ["WordPress", "Portfolio", "Animaciones", "Diseño"], featured: false },
 };
 
 type ProjectKey = keyof typeof projectConfig;
