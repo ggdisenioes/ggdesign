@@ -10,6 +10,7 @@ import { useToast } from "@/hooks/use-toast";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { Mail, MapPin, MessageCircle, Send, Clock } from "lucide-react";
 import { Link } from "react-router-dom";
+import { supabase } from "@/integrations/supabase/client";
 
 export default function Contacto() {
   const { toast } = useToast();
@@ -74,18 +75,35 @@ export default function Contacto() {
     
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    try {
+      const { error } = await supabase.from("leads").insert({
+        name: formData.name.trim(),
+        email: formData.email.trim(),
+        company: formData.company.trim() || null,
+        message: formData.message.trim(),
+        accept_commercial: acceptCommercial,
+      });
 
-    toast({
-      title: c.successTitle,
-      description: c.successMessage,
-    });
+      if (error) throw error;
 
-    setFormData({ name: "", email: "", company: "", message: "" });
-    setAcceptPrivacy(false);
-    setAcceptCommercial(false);
-    setIsSubmitting(false);
+      toast({
+        title: c.successTitle,
+        description: c.successMessage,
+      });
+
+      setFormData({ name: "", email: "", company: "", message: "" });
+      setAcceptPrivacy(false);
+      setAcceptCommercial(false);
+    } catch (error) {
+      console.error("Error submitting lead:", error);
+      toast({
+        title: "Error",
+        description: "Hubo un problema al enviar el formulario. Por favor, inténtalo de nuevo.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (
