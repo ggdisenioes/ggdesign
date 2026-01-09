@@ -1,9 +1,10 @@
+import { useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/i18n/LanguageContext";
-import { ArrowRight, Music, Scissors, Megaphone, Coffee, Bot, GraduationCap, Cog, Heart, BookOpen, Palette } from "lucide-react";
+import { ArrowRight, Music, Scissors, Megaphone, Coffee, Bot, GraduationCap, Cog, Heart, BookOpen, Palette, Filter, X } from "lucide-react";
 
 // Project images
 import alejandroLernerImg from "@/assets/projects/alejandro-lerner.png";
@@ -18,35 +19,77 @@ import siempreVitalImg from "@/assets/projects/siemprevital.png";
 import theBornIdImg from "@/assets/projects/thebornid.png";
 
 const projectConfig = {
-  alejandroLerner: { icon: Music, image: alejandroLernerImg, technologies: ["WordPress", "PHP", "Spotify API", "Newsletter"], featured: true },
-  vecka: { icon: Scissors, image: veckaImg, technologies: ["WooCommerce", "LMS", "MercadoPago", "WordPress"], featured: true },
-  growwingGroup: { icon: Megaphone, image: growwingGroupImg, technologies: ["WordPress", "Elementor", "Video", "SEO"], featured: true },
-  coachingCafe: { icon: Coffee, image: coachingCafeImg, technologies: ["WordPress", "Calendly", "Forms", "Analytics"], featured: false },
-  eari: { icon: Bot, image: eariImg, technologies: ["WooCommerce", "LMS", "WordPress", "Pagos"], featured: false },
-  mtEscuela: { icon: GraduationCap, image: mtEscuelaImg, technologies: ["WooCommerce", "Membresía", "LMS", "Ebooks"], featured: false },
-  roboticaIndustrial: { icon: Cog, image: roboticaIndustrialImg, technologies: ["WordPress", "SEO", "WhatsApp", "Forms"], featured: false },
-  salud24: { icon: Heart, image: salud24Img, technologies: ["React", "Telemedicina", "Pagos", "Dashboard"], featured: false },
-  siempreVital: { icon: BookOpen, image: siempreVitalImg, technologies: ["WordPress", "Suscripción", "Revistas", "Pagos"], featured: false },
-  theBornId: { icon: Palette, image: theBornIdImg, technologies: ["WordPress", "Portfolio", "Animaciones", "Diseño"], featured: false },
+  alejandroLerner: { icon: Music, image: alejandroLernerImg, technologies: ["WordPress", "PHP", "Spotify API", "Newsletter"], featured: true, categoryKey: "entertainment" },
+  vecka: { icon: Scissors, image: veckaImg, technologies: ["WooCommerce", "LMS", "MercadoPago", "WordPress"], featured: true, categoryKey: "ecommerce" },
+  growwingGroup: { icon: Megaphone, image: growwingGroupImg, technologies: ["WordPress", "Elementor", "Video", "SEO"], featured: true, categoryKey: "marketing" },
+  coachingCafe: { icon: Coffee, image: coachingCafeImg, technologies: ["WordPress", "Calendly", "Forms", "Analytics"], featured: false, categoryKey: "coaching" },
+  eari: { icon: Bot, image: eariImg, technologies: ["WooCommerce", "LMS", "WordPress", "Pagos"], featured: false, categoryKey: "education" },
+  mtEscuela: { icon: GraduationCap, image: mtEscuelaImg, technologies: ["WooCommerce", "Membresía", "LMS", "Ebooks"], featured: false, categoryKey: "education" },
+  roboticaIndustrial: { icon: Cog, image: roboticaIndustrialImg, technologies: ["WordPress", "SEO", "WhatsApp", "Forms"], featured: false, categoryKey: "industrial" },
+  salud24: { icon: Heart, image: salud24Img, technologies: ["React", "Telemedicina", "Pagos", "Dashboard"], featured: false, categoryKey: "health" },
+  siempreVital: { icon: BookOpen, image: siempreVitalImg, technologies: ["WordPress", "Suscripción", "Revistas", "Pagos"], featured: false, categoryKey: "media" },
+  theBornId: { icon: Palette, image: theBornIdImg, technologies: ["WordPress", "Portfolio", "Animaciones", "Diseño"], featured: false, categoryKey: "design" },
 };
 
 type ProjectKey = keyof typeof projectConfig;
+
+const projectKeys: ProjectKey[] = [
+  "alejandroLerner", "vecka", "growwingGroup", "coachingCafe", "eari",
+  "mtEscuela", "roboticaIndustrial", "salud24", "siempreVital", "theBornId"
+];
+
+// Get unique technologies across all projects
+const allTechnologies = [...new Set(
+  Object.values(projectConfig).flatMap(p => p.technologies)
+)].sort();
+
+// Category mapping for filters
+const categoryKeys = [...new Set(Object.values(projectConfig).map(p => p.categoryKey))];
 
 export default function Proyectos() {
   const { t } = useLanguage();
   const p = t.projectsPage;
 
-  const projectKeys: ProjectKey[] = [
-    "alejandroLerner", "vecka", "growwingGroup", "coachingCafe", "eari",
-    "mtEscuela", "roboticaIndustrial", "salud24", "siempreVital", "theBornId"
-  ];
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [selectedTech, setSelectedTech] = useState<string | null>(null);
 
-  // Featured projects first
-  const sortedProjects = projectKeys.sort((a, b) => {
-    const aFeatured = projectConfig[a].featured ? 1 : 0;
-    const bFeatured = projectConfig[b].featured ? 1 : 0;
-    return bFeatured - aFeatured;
-  });
+  // Get categories with translated names
+  const categories = useMemo(() => {
+    return categoryKeys.map(key => {
+      const projectKey = Object.entries(projectConfig).find(([_, config]) => config.categoryKey === key)?.[0] as ProjectKey;
+      return {
+        key,
+        name: projectKey ? p.projects[projectKey]?.category || key : key
+      };
+    });
+  }, [p.projects]);
+
+  // Filter and sort projects
+  const filteredProjects = useMemo(() => {
+    let filtered = [...projectKeys];
+    
+    if (selectedCategory) {
+      filtered = filtered.filter(key => projectConfig[key].categoryKey === selectedCategory);
+    }
+    
+    if (selectedTech) {
+      filtered = filtered.filter(key => projectConfig[key].technologies.includes(selectedTech));
+    }
+    
+    // Featured projects first
+    return filtered.sort((a, b) => {
+      const aFeatured = projectConfig[a].featured ? 1 : 0;
+      const bFeatured = projectConfig[b].featured ? 1 : 0;
+      return bFeatured - aFeatured;
+    });
+  }, [selectedCategory, selectedTech]);
+
+  const clearFilters = () => {
+    setSelectedCategory(null);
+    setSelectedTech(null);
+  };
+
+  const hasActiveFilters = selectedCategory || selectedTech;
 
   return (
     <Layout>
@@ -83,23 +126,107 @@ export default function Proyectos() {
         </div>
       </section>
 
+      {/* Filters */}
+      <section className="py-8 border-b border-border">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col gap-6">
+            {/* Filter Header */}
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2 text-muted-foreground">
+                <Filter size={18} />
+                <span className="text-sm font-medium">{p.filterLabel || "Filtrar proyectos"}</span>
+              </div>
+              {hasActiveFilters && (
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={clearFilters}
+                  className="text-muted-foreground hover:text-foreground gap-1"
+                >
+                  <X size={14} />
+                  {p.clearFilters || "Limpiar filtros"}
+                </Button>
+              )}
+            </div>
+
+            {/* Category Filters */}
+            <div className="space-y-2">
+              <span className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
+                {p.categoryLabel || "Categoría"}
+              </span>
+              <div className="flex flex-wrap gap-2">
+                {categories.map(({ key, name }) => (
+                  <button
+                    key={key}
+                    onClick={() => setSelectedCategory(selectedCategory === key ? null : key)}
+                    className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+                      selectedCategory === key
+                        ? "bg-primary text-primary-foreground"
+                        : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
+                    }`}
+                  >
+                    {name}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Technology Filters */}
+            <div className="space-y-2">
+              <span className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
+                {p.technologyLabel || "Tecnología"}
+              </span>
+              <div className="flex flex-wrap gap-2">
+                {allTechnologies.map((tech) => (
+                  <button
+                    key={tech}
+                    onClick={() => setSelectedTech(selectedTech === tech ? null : tech)}
+                    className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
+                      selectedTech === tech
+                        ? "bg-primary text-primary-foreground"
+                        : "bg-muted text-muted-foreground hover:bg-muted/80"
+                    }`}
+                  >
+                    {tech}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Results count */}
+            <div className="text-sm text-muted-foreground">
+              {filteredProjects.length} {filteredProjects.length === 1 ? (p.projectSingular || "proyecto") : (p.projectPlural || "proyectos")}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Projects Grid */}
       <section className="py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-16">
-            {sortedProjects.map((key) => {
-              const config = projectConfig[key];
-              const data = p.projects[key];
-              const Icon = config.icon;
-              
-              return (
-                <motion.article
-                  key={key}
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  className={`grid lg:grid-cols-5 gap-8 p-8 rounded-2xl glass card-hover ${config.featured ? 'ring-2 ring-primary/20' : ''}`}
-                >
+            {filteredProjects.length === 0 ? (
+              <div className="text-center py-16">
+                <p className="text-muted-foreground text-lg">{p.noResults || "No se encontraron proyectos con los filtros seleccionados."}</p>
+                <Button variant="outline" onClick={clearFilters} className="mt-4">
+                  {p.clearFilters || "Limpiar filtros"}
+                </Button>
+              </div>
+            ) : (
+              filteredProjects.map((key) => {
+                const config = projectConfig[key];
+                const data = p.projects[key];
+                const Icon = config.icon;
+                
+                return (
+                  <motion.article
+                    key={key}
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    layout
+                    className={`grid lg:grid-cols-5 gap-8 p-8 rounded-2xl glass card-hover ${config.featured ? 'ring-2 ring-primary/20' : ''}`}
+                  >
                   {/* Left Column - Image & Main Info */}
                   <div className="lg:col-span-3">
                     {/* Project Image */}
@@ -188,9 +315,10 @@ export default function Proyectos() {
                       </div>
                     </div>
                   </div>
-                </motion.article>
-              );
-            })}
+                  </motion.article>
+                );
+              })
+            )}
           </div>
         </div>
       </section>
