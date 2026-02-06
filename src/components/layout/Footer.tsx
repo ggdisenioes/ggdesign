@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
 import { Mail, MapPin } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
+import { useContactInfo } from "@/hooks/useContactInfo";
 import logo from "@/assets/logo.png";
 
 export function Footer() {
   const { t } = useLanguage();
+  const { email, emailHref } = useContactInfo();
 
   const footerLinks = {
     servicios: [
@@ -43,8 +45,8 @@ export function Footer() {
               </div>
               <div className="flex items-center gap-3 text-sm text-muted-foreground">
                 <Mail size={16} className="text-primary" />
-                <a href="mailto:hola@ggdisenio.es" className="hover:text-primary transition-colors">
-                  hola@ggdisenio.es
+                <a href={emailHref} className="hover:text-primary transition-colors">
+                  {email}
                 </a>
               </div>
             </div>

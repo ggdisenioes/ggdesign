@@ -2,12 +2,14 @@ import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Globe, ChevronDown } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
+import { useContactInfo } from "@/hooks/useContactInfo";
 import { Language, languageNames, languageFlags } from "@/i18n/translations";
 
 const languages: Language[] = ["es", "en", "pt", "zh"];
 
 export function LanguageSelector() {
   const { language, setLanguage } = useLanguage();
+  const { spanishFlag } = useContactInfo();
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -30,7 +32,7 @@ export function LanguageSelector() {
         aria-label="Select language"
       >
         <Globe size={16} />
-        <span className="hidden sm:inline">{languageFlags[language]}</span>
+        <span className="hidden sm:inline">{language === "es" ? spanishFlag : languageFlags[language]}</span>
         <ChevronDown
           size={14}
           className={`transition-transform ${isOpen ? "rotate-180" : ""}`}
@@ -59,7 +61,7 @@ export function LanguageSelector() {
                     : "text-muted-foreground hover:text-foreground hover:bg-secondary/50"
                 }`}
               >
-                <span className="text-base">{languageFlags[lang]}</span>
+                <span className="text-base">{lang === "es" ? spanishFlag : languageFlags[lang]}</span>
                 <span>{languageNames[lang]}</span>
               </button>
             ))}

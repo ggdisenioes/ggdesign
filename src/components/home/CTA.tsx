@@ -3,9 +3,11 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, MessageCircle } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
+import { useContactInfo } from "@/hooks/useContactInfo";
 
 export function CTA() {
   const { t } = useLanguage();
+  const { whatsappHref } = useContactInfo();
 
   return (
     <section className="py-24 relative overflow-hidden">
@@ -38,7 +40,7 @@ export function CTA() {
             </Button>
             <Button variant="outline" size="xl" asChild>
               <a 
-                href="https://wa.me/34600000000" 
+                href={whatsappHref} 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="gap-2"

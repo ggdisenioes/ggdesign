@@ -8,6 +8,7 @@ import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useToast } from "@/hooks/use-toast";
 import { useLanguage } from "@/i18n/LanguageContext";
+import { useContactInfo } from "@/hooks/useContactInfo";
 import { Mail, MapPin, MessageCircle, Send, Clock } from "lucide-react";
 import { Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
@@ -18,6 +19,7 @@ const MIN_SUBMIT_TIME = 3000;
 export default function Contacto() {
   const { toast } = useToast();
   const { t } = useLanguage();
+  const contact = useContactInfo();
   const c = t.contactPage;
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -40,14 +42,14 @@ export default function Contacto() {
     {
       icon: Mail,
       label: c.emailLabel,
-      value: "hola@ggdisenio.es",
-      href: "mailto:hola@ggdisenio.es",
+      value: contact.email,
+      href: contact.emailHref,
     },
     {
       icon: MessageCircle,
       label: c.whatsappLabel,
-      value: "+34 652 63 84 07",
-      href: "https://wa.me/34652638407",
+      value: contact.whatsapp,
+      href: contact.whatsappHref,
     },
     {
       icon: MapPin,
@@ -405,7 +407,7 @@ export default function Contacto() {
                 </p>
                 <Button variant="outline" asChild className="w-full">
                   <a
-                    href="https://wa.me/34652638407"
+                    href={contact.whatsappHref}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="gap-2"
