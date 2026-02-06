@@ -5,6 +5,7 @@ interface LanguageContextType {
   language: Language;
   setLanguage: (lang: Language) => void;
   t: TranslationType;
+  country: string;
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
@@ -13,6 +14,7 @@ const fallbackContext: LanguageContextType = {
   language: "es",
   setLanguage: () => {},
   t: translations.es as unknown as TranslationType,
+  country: "",
 };
 
 // Map country codes to languages
@@ -51,9 +53,8 @@ const countryToLanguage: Record<string, Language> = {
   // English (default for all others)
 };
 
-async function detectLanguageByGeolocation(): Promise<Language> {
+async function detectGeoInfo(): Promise<{ language: Language; country: string }> {
   try {
-    // Use a free IP geolocation API
     const response = await fetch("https://ipapi.co/json/", {
       signal: AbortSignal.timeout(3000),
     });
@@ -61,11 +62,13 @@ async function detectLanguageByGeolocation(): Promise<Language> {
     if (!response.ok) throw new Error("Geolocation failed");
     
     const data = await response.json();
-    const countryCode = data.country_code;
+    const countryCode = data.country_code || "";
     
-    return countryToLanguage[countryCode] || "en";
+    return {
+      language: countryToLanguage[countryCode] || "en",
+      country: countryCode,
+    };
   } catch {
-    // Fallback to browser language preference
     const browserLang = navigator.language.split("-")[0];
     const langMap: Record<string, Language> = {
       es: "es",
@@ -73,37 +76,43 @@ async function detectLanguageByGeolocation(): Promise<Language> {
       pt: "pt",
       zh: "zh",
     };
-    return langMap[browserLang] || "en";
+    return { language: langMap[browserLang] || "en", country: "" };
   }
 }
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [language, setLanguageState] = useState<Language>(() => {
-    // Check localStorage first
     const saved = localStorage.getItem("gg-language");
     if (saved && (saved === "es" || saved === "en" || saved === "pt" || saved === "zh")) {
       return saved as Language;
     }
-    return "es"; // Default to Spanish initially
+    return "es";
   });
+
+  const [country, setCountry] = useState<string>("");
   
   const [isInitialized, setIsInitialized] = useState(false);
 
   useEffect(() => {
-    const initLanguage = async () => {
+    const init = async () => {
       const saved = localStorage.getItem("gg-language");
+      const geo = await detectGeoInfo();
+      setCountry(geo.country);
+      localStorage.setItem("gg-country", geo.country);
       
-      // Only detect by geolocation if no saved preference
       if (!saved) {
-        const detected = await detectLanguageByGeolocation();
-        setLanguageState(detected);
-        localStorage.setItem("gg-language", detected);
+        setLanguageState(geo.language);
+        localStorage.setItem("gg-language", geo.language);
       }
       
       setIsInitialized(true);
     };
 
-    initLanguage();
+    // Try cached country first
+    const cachedCountry = localStorage.getItem("gg-country");
+    if (cachedCountry) setCountry(cachedCountry);
+
+    init();
   }, []);
 
   const setLanguage = (lang: Language) => {
@@ -114,7 +123,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   const t = translations[language];
 
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, t }}>
+    <LanguageContext.Provider value={{ language, setLanguage, t, country }}>
       {children}
     </LanguageContext.Provider>
   );
