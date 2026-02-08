@@ -118,9 +118,9 @@ export default function Contacto() {
 
       if (error) throw error;
 
-      // Send email notification
+      // Send email notification (with rate limiting)
       try {
-        await supabase.functions.invoke("notify-lead", {
+        const { data: fnData, error: fnError } = await supabase.functions.invoke("notify-lead", {
           body: {
             name: formData.name.trim(),
             email: formData.email.trim(),
@@ -129,9 +129,18 @@ export default function Contacto() {
             acceptCommercial,
           },
         });
+        
+        if (fnError && fnError.context?.status === 429) {
+          toast({
+            title: "Error",
+            description: "Has enviado demasiados mensajes. Por favor, inténtalo más tarde.",
+            variant: "destructive",
+          });
+          setIsSubmitting(false);
+          return;
+        }
       } catch (emailError) {
         console.error("Error sending email notification:", emailError);
-        // Don't fail the form submission if email fails
       }
 
       toast({
