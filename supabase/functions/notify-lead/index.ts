@@ -1,12 +1,17 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { Resend } from "https://esm.sh/resend@2.0.0";
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2.49.4";
 
 const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
+  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
 };
+
+// Rate limit config
+const MAX_PER_IP_PER_HOUR = 5;
+const MAX_PER_EMAIL_PER_HOUR = 3;
 
 interface LeadNotificationRequest {
   name: string;
@@ -16,16 +21,94 @@ interface LeadNotificationRequest {
   acceptCommercial: boolean;
 }
 
+async function checkRateLimit(
+  supabaseAdmin: ReturnType<typeof createClient>,
+  identifier: string,
+  identifierType: "ip" | "email",
+  maxRequests: number
+): Promise<boolean> {
+  const oneHourAgo = new Date(Date.now() - 60 * 60 * 1000).toISOString();
+
+  const { count, error } = await supabaseAdmin
+    .from("form_rate_limits")
+    .select("*", { count: "exact", head: true })
+    .eq("identifier", identifier)
+    .eq("identifier_type", identifierType)
+    .gte("created_at", oneHourAgo);
+
+  if (error) {
+    console.error("Rate limit check error:", error);
+    return false; // fail open
+  }
+
+  return (count ?? 0) >= maxRequests;
+}
+
+async function recordRequest(
+  supabaseAdmin: ReturnType<typeof createClient>,
+  identifier: string,
+  identifierType: "ip" | "email"
+) {
+  await supabaseAdmin.from("form_rate_limits").insert({
+    identifier,
+    identifier_type: identifierType,
+  });
+}
+
 const handler = async (req: Request): Promise<Response> => {
-  // Handle CORS preflight requests
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
   }
 
   try {
+    const supabaseAdmin = createClient(
+      Deno.env.get("SUPABASE_URL")!,
+      Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!
+    );
+
+    // Get client IP
+    const clientIp =
+      req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
+      req.headers.get("cf-connecting-ip") ||
+      "unknown";
+
     const { name, email, company, message, acceptCommercial }: LeadNotificationRequest = await req.json();
 
     console.log("Received lead notification request:", { name, email, company });
+
+    // Check rate limits
+    const ipLimited = await checkRateLimit(supabaseAdmin, clientIp, "ip", MAX_PER_IP_PER_HOUR);
+    if (ipLimited) {
+      console.warn("Rate limited by IP:", clientIp);
+      return new Response(
+        JSON.stringify({ error: "rate_limited", message: "Too many requests. Please try again later." }),
+        { status: 429, headers: { "Content-Type": "application/json", ...corsHeaders } }
+      );
+    }
+
+    const emailLimited = await checkRateLimit(supabaseAdmin, email.toLowerCase(), "email", MAX_PER_EMAIL_PER_HOUR);
+    if (emailLimited) {
+      console.warn("Rate limited by email:", email);
+      return new Response(
+        JSON.stringify({ error: "rate_limited", message: "Too many requests from this email. Please try again later." }),
+        { status: 429, headers: { "Content-Type": "application/json", ...corsHeaders } }
+      );
+    }
+
+    // Record this request for rate limiting
+    await Promise.all([
+      recordRequest(supabaseAdmin, clientIp, "ip"),
+      recordRequest(supabaseAdmin, email.toLowerCase(), "email"),
+    ]);
+
+    // Cleanup old entries periodically (1 in 10 chance)
+    if (Math.random() < 0.1) {
+      supabaseAdmin.rpc("cleanup_old_rate_limits").then(() => {
+        console.log("Old rate limit entries cleaned up");
+      }).catch((err: unknown) => {
+        console.error("Cleanup error:", err);
+      });
+    }
 
     // Send notification to business owners
     const notificationResponse = await resend.emails.send({
