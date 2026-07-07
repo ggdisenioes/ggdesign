@@ -94,26 +94,37 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   const [isInitialized, setIsInitialized] = useState(false);
 
   useEffect(() => {
+    const saved = localStorage.getItem("gg-language");
+    const cachedCountry = localStorage.getItem("gg-country");
+    if (cachedCountry) setCountry(cachedCountry);
+
+    // Skip the external geolocation request when we already know both
+    // the visitor's language and country from a previous visit.
+    if (saved && cachedCountry) {
+      setIsInitialized(true);
+      return;
+    }
+
     const init = async () => {
-      const saved = localStorage.getItem("gg-language");
       const geo = await detectGeoInfo();
       setCountry(geo.country);
       localStorage.setItem("gg-country", geo.country);
-      
+
       if (!saved) {
         setLanguageState(geo.language);
         localStorage.setItem("gg-language", geo.language);
       }
-      
+
       setIsInitialized(true);
     };
 
-    // Try cached country first
-    const cachedCountry = localStorage.getItem("gg-country");
-    if (cachedCountry) setCountry(cachedCountry);
-
     init();
   }, []);
+
+  // Keep the document language in sync for accessibility and SEO
+  useEffect(() => {
+    document.documentElement.lang = language;
+  }, [language]);
 
   const setLanguage = (lang: Language) => {
     setLanguageState(lang);

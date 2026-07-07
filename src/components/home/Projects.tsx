@@ -5,9 +5,9 @@ import { ArrowRight } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 
 // Import featured project images
-import alejandroLernerImg from "@/assets/projects/alejandro-lerner.png";
-import veckaImg from "@/assets/projects/vecka.png";
-import growwingGroupImg from "@/assets/projects/growwinggroup.png";
+import alejandroLernerImg from "@/assets/projects/alejandro-lerner.webp";
+import veckaImg from "@/assets/projects/vecka.webp";
+import growwingGroupImg from "@/assets/projects/growwinggroup.webp";
 
 export function Projects() {
   const { t } = useLanguage();

@@ -1,9 +1,14 @@
 import { Layout } from "@/components/layout/Layout";
+import { Seo } from "@/components/Seo";
 import { motion } from "framer-motion";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 export default function Privacidad() {
+  const { t } = useLanguage();
+
   return (
     <Layout>
+      <Seo title={t.seo.privacy.title} description={t.seo.privacy.description} />
       <section className="pt-24 pb-16 relative">
         <div className="absolute inset-0 bg-gradient-radial opacity-30" />
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -33,7 +38,7 @@ export default function Privacidad() {
                 <p>
                   <strong className="text-foreground">Identidad:</strong> GG Diseño<br />
                   <strong className="text-foreground">Dirección:</strong> Madrid, España<br />
-                  <strong className="text-foreground">Email:</strong> hola@ggdisenio.es<br />
+                  <strong className="text-foreground">Email:</strong> info@ggdisenio.es<br />
                 </p>
                 <p className="mt-4">
                   En cumplimiento del Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo (RGPD) 
@@ -136,7 +141,7 @@ export default function Privacidad() {
                   <li><strong className="text-foreground">Portabilidad:</strong> recibir sus datos en formato estructurado y de uso común.</li>
                 </ul>
                 <p className="mt-4">
-                  Para ejercer estos derechos, puede contactarnos en: <strong className="text-foreground">hola@ggdisenio.es</strong>
+                  Para ejercer estos derechos, puede contactarnos en: <strong className="text-foreground">info@ggdisenio.es</strong>
                 </p>
                 <p className="mt-4">
                   También tiene derecho a presentar una reclamación ante la Agencia Española de 

@@ -1,9 +1,14 @@
 import { Layout } from "@/components/layout/Layout";
+import { Seo } from "@/components/Seo";
 import { motion } from "framer-motion";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 export default function Cookies() {
+  const { t } = useLanguage();
+
   return (
     <Layout>
+      <Seo title={t.seo.cookies.title} description={t.seo.cookies.description} />
       <section className="pt-24 pb-16 relative">
         <div className="absolute inset-0 bg-gradient-radial opacity-30" />
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -188,8 +193,8 @@ export default function Cookies() {
                 </p>
                 <p className="mt-2">
                   <strong className="text-foreground">Email:</strong>{" "}
-                  <a href="mailto:hola@ggdisenio.es" className="text-primary hover:underline">
-                    hola@ggdisenio.es
+                  <a href="mailto:info@ggdisenio.es" className="text-primary hover:underline">
+                    info@ggdisenio.es
                   </a>
                 </p>
               </div>

@@ -1,73 +1,43 @@
-# Welcome to your Lovable project
+# ggdisenio.es — GG Diseño
 
-## Project info
+Sitio web de GG Diseño, agencia de desarrollo web, IA y automatización en Madrid.
+Producción: [https://ggdisenio.es](https://ggdisenio.es) (deploy automático en Vercel al pushear a la rama principal).
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## Stack
 
-## How can I edit this code?
+- **Vite + React 18 + TypeScript**
+- **Tailwind CSS + shadcn/ui** (componentes en `src/components/ui`)
+- **react-router-dom** (SPA multi-página; rewrites en `vercel.json`)
+- **framer-motion** (animaciones, respeta `prefers-reduced-motion`)
+- **Supabase**: tabla `leads` (formulario de contacto, RLS activo) + edge functions `notify-lead` (emails vía Resend, rate limit por IP/email) y `chat` (chatbot)
+- **i18n propio** (`src/i18n`): español, inglés, portugués y chino, con detección por geolocalización cacheada
 
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+## Desarrollo
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+npm install
+npm run dev        # servidor local en :8080
+npm run build      # build de producción
+npm run lint       # eslint
+npm run preview    # servir el build localmente
 ```
 
-**Edit a file directly in GitHub**
+## Estructura
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+- `src/pages/` — una página por ruta (`/`, `/servicios`, `/proyectos`, `/nosotros`, `/contacto`, `/legal`, `/privacidad`, `/cookies`, 404)
+- `src/components/Seo.tsx` — título, description, canonical y metadatos sociales por ruta
+- `src/hooks/useContactInfo.ts` — datos de contacto según región (España por defecto, Argentina con datos locales)
+- `public/` — `sitemap.xml`, `robots.txt`, `og-image.png`, favicon
+- `supabase/` — migraciones y edge functions
 
-**Use GitHub Codespaces**
+## SEO y calidad
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+- Metadata por página + Open Graph/Twitter con imagen propia (`public/og-image.png`)
+- JSON-LD `ProfessionalService` en `index.html`
+- `sitemap.xml` referenciado desde `robots.txt`
+- Cabeceras de seguridad y caché de assets en `vercel.json`
+- Banner de cookies con consentimiento granular (RGPD)
 
-## What technologies are used for this project?
+## Variables de entorno
 
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+`.env` contiene únicamente las claves **públicas** de Supabase (URL y anon key), que viajan al navegador por diseño. Los secretos (`RESEND_API_KEY`, `SUPABASE_SERVICE_ROLE_KEY`, `LOVABLE_API_KEY`) viven solo en la configuración de las edge functions de Supabase — nunca en este repo.

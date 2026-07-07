@@ -1,6 +1,7 @@
 import { useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
+import { Seo } from "@/components/Seo";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/i18n/LanguageContext";
@@ -42,16 +43,16 @@ const technologyIcons: Record<string, LucideIcon> = {
 };
 
 // Project images
-import alejandroLernerImg from "@/assets/projects/alejandro-lerner.png";
-import veckaImg from "@/assets/projects/vecka.png";
-import growwingGroupImg from "@/assets/projects/growwinggroup.png";
-import coachingCafeImg from "@/assets/projects/coaching-cafe.png";
-import eariImg from "@/assets/projects/eari.png";
-import mtEscuelaImg from "@/assets/projects/mt-escuela.png";
-import roboticaIndustrialImg from "@/assets/projects/robotica-industrial.png";
-import salud24Img from "@/assets/projects/salud24.png";
-import siempreVitalImg from "@/assets/projects/siemprevital.png";
-import theBornIdImg from "@/assets/projects/thebornid.png";
+import alejandroLernerImg from "@/assets/projects/alejandro-lerner.webp";
+import veckaImg from "@/assets/projects/vecka.webp";
+import growwingGroupImg from "@/assets/projects/growwinggroup.webp";
+import coachingCafeImg from "@/assets/projects/coaching-cafe.webp";
+import eariImg from "@/assets/projects/eari.webp";
+import mtEscuelaImg from "@/assets/projects/mt-escuela.webp";
+import roboticaIndustrialImg from "@/assets/projects/robotica-industrial.webp";
+import salud24Img from "@/assets/projects/salud24.webp";
+import siempreVitalImg from "@/assets/projects/siemprevital.webp";
+import theBornIdImg from "@/assets/projects/thebornid.webp";
 
 const projectConfig = {
   alejandroLerner: { icon: Music, image: alejandroLernerImg, technologies: ["WordPress", "PHP", "Spotify API", "Newsletter"], featured: true, categoryKey: "entertainment" },
@@ -128,6 +129,7 @@ export default function Proyectos() {
 
   return (
     <Layout>
+      <Seo title={t.seo.projects.title} description={t.seo.projects.description} />
       {/* Hero Section */}
       <section className="pt-24 pb-16 relative">
         <div className="absolute inset-0 bg-gradient-radial opacity-30" />

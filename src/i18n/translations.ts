@@ -16,6 +16,50 @@ export const languageFlags: Record<Language, string> = {
 
 export const translations = {
   es: {
+    seo: {
+      home: {
+        title: "GG Diseño | Agencia de Desarrollo Web, IA y Automatización en Madrid",
+        description: "Agencia boutique tecnológica en Madrid. Desarrollo web profesional, inteligencia artificial, automatizaciones y ciberseguridad para empresas en España y Europa.",
+      },
+      services: {
+        title: "Servicios: Desarrollo Web, IA, Automatización y Ciberseguridad | GG Diseño",
+        description: "Desarrollo web a medida, integración de inteligencia artificial, automatización de procesos y ciberseguridad. Soluciones tecnológicas para hacer crecer tu negocio.",
+      },
+      projects: {
+        title: "Proyectos: casos reales de desarrollo web e IA | GG Diseño",
+        description: "Más de 20 proyectos entregados: e-commerce, educación, salud, industria y más. Descubre lo que podemos construir para tu empresa.",
+      },
+      about: {
+        title: "Nosotros: una década creando soluciones digitales | GG Diseño",
+        description: "Conoce a GG Diseño: agencia boutique con años de experiencia en desarrollo web y tecnología, especializada en IA, automatización y ciberseguridad.",
+      },
+      contact: {
+        title: "Contacto: cuéntanos tu proyecto | GG Diseño",
+        description: "Escríbenos y te respondemos en 24-48 h. Formulario, email y WhatsApp. Presupuesto sin compromiso para tu proyecto web, de IA o automatización.",
+      },
+      privacy: {
+        title: "Política de Privacidad | GG Diseño",
+        description: "Política de privacidad de ggdisenio.es: qué datos tratamos, con qué finalidad y cómo ejercer tus derechos.",
+      },
+      cookies: {
+        title: "Política de Cookies | GG Diseño",
+        description: "Política de cookies de ggdisenio.es: qué cookies usamos y cómo configurarlas.",
+      },
+      legal: {
+        title: "Aviso Legal | GG Diseño",
+        description: "Aviso legal y condiciones de uso del sitio web ggdisenio.es.",
+      },
+      notFound: {
+        title: "Página no encontrada | GG Diseño",
+        description: "La página que buscas no existe o ha cambiado de dirección.",
+      },
+    },
+    notFound: {
+      title: "Página no encontrada",
+      description: "La página que buscas no existe o ha cambiado de dirección. Puedes volver al inicio o contarnos qué estabas buscando.",
+      backHome: "Volver al inicio",
+      contact: "Contactar",
+    },
     nav: {
       home: "Inicio",
       services: "Servicios",
@@ -404,6 +448,50 @@ export const translations = {
     },
   },
   en: {
+    seo: {
+      home: {
+        title: "GG Diseño | Web Development, AI & Automation Agency in Madrid",
+        description: "Boutique tech agency in Madrid. Professional web development, artificial intelligence, automation and cybersecurity for companies in Spain and Europe.",
+      },
+      services: {
+        title: "Services: Web Development, AI, Automation & Cybersecurity | GG Diseño",
+        description: "Custom web development, AI integration, process automation and cybersecurity. Technology solutions to grow your business.",
+      },
+      projects: {
+        title: "Projects: real web development & AI case studies | GG Diseño",
+        description: "20+ delivered projects: e-commerce, education, healthcare, industry and more. See what we can build for your company.",
+      },
+      about: {
+        title: "About us: a decade building digital solutions | GG Diseño",
+        description: "Meet GG Diseño: a boutique agency with years of experience in web development and technology, specialized in AI, automation and cybersecurity.",
+      },
+      contact: {
+        title: "Contact: tell us about your project | GG Diseño",
+        description: "Write to us and we'll reply within 24-48h. Form, email and WhatsApp. Free quote for your web, AI or automation project.",
+      },
+      privacy: {
+        title: "Privacy Policy | GG Diseño",
+        description: "Privacy policy of ggdisenio.es: what data we process, why, and how to exercise your rights.",
+      },
+      cookies: {
+        title: "Cookie Policy | GG Diseño",
+        description: "Cookie policy of ggdisenio.es: which cookies we use and how to configure them.",
+      },
+      legal: {
+        title: "Legal Notice | GG Diseño",
+        description: "Legal notice and terms of use of ggdisenio.es.",
+      },
+      notFound: {
+        title: "Page not found | GG Diseño",
+        description: "The page you're looking for doesn't exist or has moved.",
+      },
+    },
+    notFound: {
+      title: "Page not found",
+      description: "The page you're looking for doesn't exist or has moved. You can go back home or tell us what you were looking for.",
+      backHome: "Back to home",
+      contact: "Contact us",
+    },
     nav: {
       home: "Home",
       services: "Services",
@@ -788,6 +876,50 @@ export const translations = {
     },
   },
   pt: {
+    seo: {
+      home: {
+        title: "GG Diseño | Agência de Desenvolvimento Web, IA e Automação em Madri",
+        description: "Agência boutique de tecnologia em Madri. Desenvolvimento web profissional, inteligência artificial, automações e cibersegurança para empresas na Espanha e na Europa.",
+      },
+      services: {
+        title: "Serviços: Desenvolvimento Web, IA, Automação e Cibersegurança | GG Diseño",
+        description: "Desenvolvimento web sob medida, integração de IA, automação de processos e cibersegurança. Soluções tecnológicas para fazer seu negócio crescer.",
+      },
+      projects: {
+        title: "Projetos: casos reais de desenvolvimento web e IA | GG Diseño",
+        description: "Mais de 20 projetos entregues: e-commerce, educação, saúde, indústria e muito mais. Veja o que podemos construir para a sua empresa.",
+      },
+      about: {
+        title: "Sobre nós: uma década criando soluções digitais | GG Diseño",
+        description: "Conheça a GG Diseño: agência boutique com anos de experiência em desenvolvimento web e tecnologia, especializada em IA, automação e cibersegurança.",
+      },
+      contact: {
+        title: "Contato: conte-nos sobre o seu projeto | GG Diseño",
+        description: "Escreva para nós e respondemos em 24-48h. Formulário, e-mail e WhatsApp. Orçamento sem compromisso para o seu projeto web, de IA ou automação.",
+      },
+      privacy: {
+        title: "Política de Privacidade | GG Diseño",
+        description: "Política de privacidade do ggdisenio.es: quais dados tratamos, com que finalidade e como exercer seus direitos.",
+      },
+      cookies: {
+        title: "Política de Cookies | GG Diseño",
+        description: "Política de cookies do ggdisenio.es: quais cookies usamos e como configurá-los.",
+      },
+      legal: {
+        title: "Aviso Legal | GG Diseño",
+        description: "Aviso legal e condições de uso do site ggdisenio.es.",
+      },
+      notFound: {
+        title: "Página não encontrada | GG Diseño",
+        description: "A página que você procura não existe ou mudou de endereço.",
+      },
+    },
+    notFound: {
+      title: "Página não encontrada",
+      description: "A página que você procura não existe ou mudou de endereço. Você pode voltar ao início ou nos contar o que estava procurando.",
+      backHome: "Voltar ao início",
+      contact: "Fale conosco",
+    },
     nav: {
       home: "Início",
       services: "Serviços",
@@ -1044,6 +1176,50 @@ export const translations = {
     },
   },
   zh: {
+    seo: {
+      home: {
+        title: "GG Diseño | 马德里网页开发、人工智能与自动化机构",
+        description: "位于马德里的精品科技机构。为西班牙和欧洲的企业提供专业网页开发、人工智能、自动化和网络安全服务。",
+      },
+      services: {
+        title: "服务：网页开发、人工智能、自动化与网络安全 | GG Diseño",
+        description: "定制网页开发、人工智能集成、流程自动化和网络安全。助力您的业务增长的技术解决方案。",
+      },
+      projects: {
+        title: "项目：真实的网页开发与人工智能案例 | GG Diseño",
+        description: "已交付20多个项目：电子商务、教育、医疗、工业等。了解我们能为您的企业打造什么。",
+      },
+      about: {
+        title: "关于我们：十年数字解决方案经验 | GG Diseño",
+        description: "了解 GG Diseño：一家拥有多年网页开发和技术经验的精品机构，专注于人工智能、自动化和网络安全。",
+      },
+      contact: {
+        title: "联系我们：告诉我们您的项目 | GG Diseño",
+        description: "给我们写信，我们将在24-48小时内回复。表单、电子邮件和 WhatsApp。免费为您的网页、人工智能或自动化项目报价。",
+      },
+      privacy: {
+        title: "隐私政策 | GG Diseño",
+        description: "ggdisenio.es 的隐私政策：我们处理哪些数据、目的是什么以及如何行使您的权利。",
+      },
+      cookies: {
+        title: "Cookie 政策 | GG Diseño",
+        description: "ggdisenio.es 的 Cookie 政策：我们使用哪些 Cookie 以及如何配置。",
+      },
+      legal: {
+        title: "法律声明 | GG Diseño",
+        description: "ggdisenio.es 网站的法律声明和使用条款。",
+      },
+      notFound: {
+        title: "页面未找到 | GG Diseño",
+        description: "您访问的页面不存在或已被移动。",
+      },
+    },
+    notFound: {
+      title: "页面未找到",
+      description: "您访问的页面不存在或已被移动。您可以返回首页，或告诉我们您在寻找什么。",
+      backHome: "返回首页",
+      contact: "联系我们",
+    },
     nav: { home: "首页", services: "服务", projects: "项目", about: "关于我们", contact: "联系我们", requestQuote: "请求报价" },
     hero: { badge: "马德里精品科技机构", headline1: "网络解决方案", headline2: "智能", headline3: "自动化且", headline4: "安全", subtitle: "我们设计和开发数字解决方案，推动您在西班牙和欧洲的业务增长。", cta1: "请求报价", cta2: "查看项目", pillar1: "人工智能", pillar2: "自动化", pillar3: "网络安全" },
     pillars: { sectionLabel: "我们的支柱", title: "改变一切的技术", subtitle: "三大基本支柱，确保高效、安全、面向未来的数字解决方案。", learnMore: "了解更多", ai: { title: "人工智能", description: "在网站和平台中集成人工智能。智能聊天机器人、响应自动化和以转化为导向的流程。", feature1: "客户服务聊天机器人", feature2: "响应自动化", feature3: "应用于转化的人工智能" }, automation: { title: "自动化", description: "数字流程自动化和平台集成。减少手动任务、错误和运营成本。", feature1: "自动化潜在客户捕获流程", feature2: "系统集成", feature3: "节省时间和成本" }, security: { title: "网络安全", description: "从设计开始就确保网站安全。数据保护、漏洞预防和网络安全最佳实践。", feature1: "安全设计", feature2: "数据保护", feature3: "漏洞预防" } },

@@ -1,9 +1,14 @@
 import { Layout } from "@/components/layout/Layout";
+import { Seo } from "@/components/Seo";
 import { motion } from "framer-motion";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 export default function Legal() {
+  const { t } = useLanguage();
+
   return (
     <Layout>
+      <Seo title={t.seo.legal.title} description={t.seo.legal.description} />
       <section className="pt-24 pb-16 relative">
         <div className="absolute inset-0 bg-gradient-radial opacity-30" />
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -39,7 +44,7 @@ export default function Legal() {
                   <li><strong className="text-foreground">Nombre Comercial:</strong> GG Diseño</li>
                   <li><strong className="text-foreground">Domicilio:</strong> Madrid, España</li>
                   <li><strong className="text-foreground">Actividad:</strong> Servicios de desarrollo web, inteligencia artificial, automatizaciones y ciberseguridad</li>
-                  <li><strong className="text-foreground">Email de contacto:</strong> hola@ggdisenio.es</li>
+                  <li><strong className="text-foreground">Email de contacto:</strong> info@ggdisenio.es</li>
                 </ul>
               </div>
 
@@ -167,8 +172,8 @@ export default function Legal() {
                 </p>
                 <p className="mt-2">
                   <strong className="text-foreground">Email:</strong>{" "}
-                  <a href="mailto:hola@ggdisenio.es" className="text-primary hover:underline">
-                    hola@ggdisenio.es
+                  <a href="mailto:info@ggdisenio.es" className="text-primary hover:underline">
+                    info@ggdisenio.es
                   </a>
                 </p>
               </div>

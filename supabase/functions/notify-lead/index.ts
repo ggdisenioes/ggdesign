@@ -21,6 +21,16 @@ interface LeadNotificationRequest {
   acceptCommercial: boolean;
 }
 
+// Lead data is user input: escape it before interpolating into email HTML
+function escapeHtml(value: string): string {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
 async function checkRateLimit(
   supabaseAdmin: ReturnType<typeof createClient>,
   identifier: string,
@@ -72,7 +82,12 @@ const handler = async (req: Request): Promise<Response> => {
       req.headers.get("cf-connecting-ip") ||
       "unknown";
 
-    const { name, email, company, message, acceptCommercial }: LeadNotificationRequest = await req.json();
+    const body: LeadNotificationRequest = await req.json();
+    const { email, acceptCommercial } = body;
+    const name = escapeHtml(body.name ?? "");
+    const company = body.company ? escapeHtml(body.company) : null;
+    const message = escapeHtml(body.message ?? "");
+    const safeEmail = escapeHtml(email ?? "");
 
     console.log("Received lead notification request:", { name, email, company });
 
@@ -113,7 +128,7 @@ const handler = async (req: Request): Promise<Response> => {
     // Send notification to business owners
     const notificationResponse = await resend.emails.send({
       from: "GG Diseño <noreply@ggdisenio.es>",
-      to: ["hola@ggdisenio.es", "info@ggdisenio.es"],
+      to: ["info@ggdisenio.es"],
       subject: `🎯 Nuevo lead: ${name}`,
       html: `
         <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
@@ -126,7 +141,7 @@ const handler = async (req: Request): Promise<Response> => {
             
             <div style="background: white; padding: 20px; border-radius: 8px; border: 1px solid #e2e8f0; margin-bottom: 20px;">
               <p style="margin: 8px 0;"><strong style="color: #6366f1;">Nombre:</strong> ${name}</p>
-              <p style="margin: 8px 0;"><strong style="color: #6366f1;">Email:</strong> <a href="mailto:${email}" style="color: #6366f1;">${email}</a></p>
+              <p style="margin: 8px 0;"><strong style="color: #6366f1;">Email:</strong> <a href="mailto:${safeEmail}" style="color: #6366f1;">${safeEmail}</a></p>
               ${company ? `<p style="margin: 8px 0;"><strong style="color: #6366f1;">Empresa:</strong> ${company}</p>` : ''}
               <p style="margin: 8px 0;"><strong style="color: #6366f1;">Acepta comunicaciones comerciales:</strong> ${acceptCommercial ? '✅ Sí' : '❌ No'}</p>
             </div>
@@ -137,7 +152,7 @@ const handler = async (req: Request): Promise<Response> => {
             </div>
             
             <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #e2e8f0; text-align: center;">
-              <a href="mailto:${email}?subject=Re: Consulta desde GG Diseño" style="display: inline-block; background: #6366f1; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600;">
+              <a href="mailto:${safeEmail}?subject=Re: Consulta desde GG Diseño" style="display: inline-block; background: #6366f1; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600;">
                 Responder al lead
               </a>
             </div>
@@ -199,7 +214,7 @@ const handler = async (req: Request): Promise<Response> => {
           <div style="text-align: center; margin-top: 20px; padding: 20px; background: #f1f5f9; border-radius: 8px;">
             <p style="color: #64748b; font-size: 12px; margin: 0;">
               GG Diseño · Madrid, España<br/>
-              <a href="mailto:hola@ggdisenio.es" style="color: #6366f1;">hola@ggdisenio.es</a>
+              <a href="mailto:info@ggdisenio.es" style="color: #6366f1;">info@ggdisenio.es</a>
             </p>
           </div>
         </div>
@@ -219,10 +234,10 @@ const handler = async (req: Request): Promise<Response> => {
         headers: { "Content-Type": "application/json", ...corsHeaders },
       }
     );
-  } catch (error: any) {
+  } catch (error) {
     console.error("Error in notify-lead function:", error);
     return new Response(
-      JSON.stringify({ error: error.message }),
+      JSON.stringify({ error: error instanceof Error ? error.message : "Unexpected error" }),
       {
         status: 500,
         headers: { "Content-Type": "application/json", ...corsHeaders },

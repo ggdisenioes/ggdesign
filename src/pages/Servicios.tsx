@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
+import { Seo } from "@/components/Seo";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/i18n/LanguageContext";
@@ -38,6 +39,7 @@ export default function Servicios() {
 
   return (
     <Layout>
+      <Seo title={t.seo.services.title} description={t.seo.services.description} />
       {/* Hero Section */}
       <section className="pt-24 pb-16 relative">
         <div className="absolute inset-0 bg-gradient-radial opacity-30" />
