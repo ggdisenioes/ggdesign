@@ -12,7 +12,15 @@ import { useLanguage } from "@/i18n/LanguageContext";
 import { useContactInfo } from "@/hooks/useContactInfo";
 import { Mail, MapPin, MessageCircle, Send, Clock } from "lucide-react";
 import { Link } from "react-router-dom";
-import { supabase } from "@/integrations/supabase/client";
+import { createClient } from "@supabase/supabase-js";
+import type { Database } from "@/integrations/supabase/types";
+
+// Independent contact-form backend. Other features (including chat) keep their existing client.
+const contactSupabase = createClient<Database>(
+  "https://ysxvkyfvxyzvjiqgqlup.supabase.co",
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlzeHZreWZ2eHl6dmppcWdxbHVwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTMyOTA0ODYsImV4cCI6MjA2ODg2NjQ4Nn0.4uYaGUwtHFhRmo6-uxhKw9NKv6GkFRR1fZ3sVlyZv9c",
+  { auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false } }
+);
 
 // Minimum time (ms) a human needs to fill the form
 const MIN_SUBMIT_TIME = 3000;
@@ -109,7 +117,7 @@ export default function Contacto() {
     setIsSubmitting(true);
 
     try {
-      const { error } = await supabase.from("leads").insert({
+      const { error } = await contactSupabase.from("leads").insert({
         name: formData.name.trim(),
         email: formData.email.trim(),
         company: formData.company.trim() || null,
@@ -119,29 +127,25 @@ export default function Contacto() {
 
       if (error) throw error;
 
-      // Send email notification (with rate limiting)
-      try {
-        const { data: fnData, error: fnError } = await supabase.functions.invoke("notify-lead", {
-          body: {
-            name: formData.name.trim(),
-            email: formData.email.trim(),
-            company: formData.company.trim() || null,
-            message: formData.message.trim(),
-            acceptCommercial,
-          },
-        });
-        
-        if (fnError && fnError.context?.status === 429) {
-          toast({
-            title: "Error",
-            description: "Has enviado demasiados mensajes. Por favor, inténtalo más tarde.",
-            variant: "destructive",
-          });
-          setIsSubmitting(false);
-          return;
-        }
-      } catch (emailError) {
-        console.error("Error sending email notification:", emailError);
+      // Notify by email. Do not report full success when the delivery API rejects it.
+      const { data: fnData, error: fnError } = await contactSupabase.functions.invoke("notify-lead", {
+        body: {
+          name: formData.name.trim(),
+          email: formData.email.trim(),
+          company: formData.company.trim() || null,
+          message: formData.message.trim(),
+          acceptCommercial,
+        },
+      });
+
+      if (fnError) {
+        console.error("Error sending email notification:", fnError);
+        throw new Error("Lead saved, but email notification failed");
+      }
+
+      if (fnData?.notification?.error) {
+        console.error("Resend notification rejected:", fnData.notification.error);
+        throw new Error("Lead saved, but Resend rejected the notification");
       }
 
       toast({
