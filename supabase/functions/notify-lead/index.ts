@@ -128,7 +128,7 @@ const handler = async (req: Request): Promise<Response> => {
     // Send notification to business owners
     const notificationResponse = await resend.emails.send({
       from: "GG Diseño <noreply@ggdisenio.es>",
-      to: ["info@ggdisenio.es"],
+      to: ["ggdisenioes@gmail.com"],
       subject: `🎯 Nuevo lead: ${name}`,
       html: `
         <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
